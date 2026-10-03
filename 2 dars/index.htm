@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Study — O'quv platformasi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">AS</div>
+        <div class="brand-text">AI<b>Study</b></div>
+      </div>
+      <nav class="side-nav" id="sideNav"></nav>
+      <div class="side-foot">
+        <button class="foot-btn" id="themeBtn" onclick="toggleTheme()" title="Mavzuni almashtirish"></button>
+        <button class="user-mini" id="userMini" onclick="showSection('profil')"></button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <!-- ===== MOBIL TOPBAR ===== -->
+      <header class="topbar">
+        <button class="burger" onclick="toggleSidebar()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <div class="brand-text">AI<b>Study</b></div>
+        <div class="top-stats" id="topStats"></div>
+      </header>
+
+      <main class="content">
+
+        <!-- ===== ASOSIY PANEL ===== -->
+        <section id="view-dashboard" class="view active">
+          <div class="view-head">
+            <h1>Salom, <span class="grad-text" id="dashName">O'quvchi</span> <span class="tag tag-plain"
+                id="gradeTag"></span></h1>
+            <p class="quote" id="dashQuote"></p>
+          </div>
+          <div class="stat-grid" id="dashStats"></div>
+          <div class="dash-grid">
+            <div class="card">
+              <div class="card-head">
+                <h3>Bu haftagi faollik</h3><span class="tag" id="weekPts">0 ball</span>
+              </div>
+              <div class="chart" id="chart"></div>
+            </div>
+            <div class="card" id="levelCard"></div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <h3>Fanlar bo'yicha progress</h3>
+            </div>
+            <div id="dashSubjects"></div>
+          </div>
+        </section>
+
+        <!-- ===== FANLAR ===== -->
+        <section id="view-fanlar" class="view">
+          <div class="view-head">
+            <h1>Fanlar</h1>
+            <p>Sinfingizga mos fanlar</p>
+          </div>
+          <div class="mode-grid" id="subjectGrid"></div>
+        </section>
+
+        <!-- ===== AI CHAT ===== -->
+        <section id="view-chat" class="view">
+          <div class="view-head">
+            <h1>AI yordamchi</h1>
+            <p>Savollaringizni yozing — javob berishga harakat qilaman</p>
+            <span class="tag" id="aiStatus" style="margin-top:10px;display:inline-flex">Offline rejim</span>
+          </div>
+          <div class="card chat-card">
+            <div class="chat-msgs" id="chatMsgs"></div>
+            <div class="chat-row">
+              <input id="chatInput" class="input" placeholder="Savolingizni yozing..."
+                onkeydown="if(event.key==='Enter')sendMessage()">
+              <button class="btn btn-primary icon-btn" onclick="sendMessage()" title="Yuborish">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="chips" id="chatChips"></div>
+        </section>
+
+        <!-- ===== TESTLAR ===== -->
+        <section id="view-testlar" class="view">
+          <div class="view-head">
+            <h1>Testlar</h1>
+            <p>Fanni tanlang, murakkablikni belgilang va boshlang</p>
+          </div>
+
+          <div id="testSetup">
+            <div class="mode-grid" id="testGrid"></div>
+            <div class="card setup hidden" id="setupPanel">
+              <div class="setup-head">
+                <h3 id="setupTitle"></h3><span class="tag" id="setupMeta"></span>
+              </div>
+              <div class="setup-row">
+                <div>
+                  <label class="lbl">Murakkablik</label>
+                  <div class="pill-row">
+                    <button class="pill active" data-d="0" onclick="setDiff(this)">Barchasi</button>
+                    <button class="pill" data-d="1" onclick="setDiff(this)">Oson</button>
+                    <button class="pill" data-d="2" onclick="setDiff(this)">O'rta</button>
+                    <button class="pill" data-d="3" onclick="setDiff(this)">Qiyin</button>
+                  </div>
+                </div>
+                <div>
+                  <label class="lbl">Savollar soni</label>
+                  <select id="countSel" class="input">
+                    <option value="4">4 savol</option>
+                    <option value="5" selected>5 savol</option>
+                    <option value="6">6 savol</option>
+                    <option value="8">8 savol</option>
+                    <option value="10">10 savol</option>
+                  </select>
+                </div>
+                <div class="setup-actions">
+                  <button class="btn btn-primary" onclick="startTest()">Testni boshlash</button>
+                  <button class="btn btn-ghost" onclick="closeSetup()">Bekor qilish</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="testActive" class="hidden">
+            <div class="card test-head">
+              <div><span class="tag" id="tSubject"></span> <span class="tag tag-plain" id="tDiff"></span></div>
+              <div class="t-meta"><span class="timer" id="timer">05:00</span><span class="tag tag-plain"
+                  id="tCounter"></span></div>
+            </div>
+            <div class="t-bar">
+              <div class="bar-fill" id="tProgress"></div>
+            </div>
+            <div class="card">
+              <h3 class="q-text" id="qText"></h3>
+              <div id="optBox"></div>
+              <div class="test-nav">
+                <button class="btn btn-ghost" id="prevBtn" onclick="prevQ()">Orqaga</button>
+                <button class="btn btn-danger-ghost" onclick="abortTest()">Tashlab yuborish</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQ()">Keyingi</button>
+              </div>
+              <p class="kbd-hint">Maslahat: 1–4 tugmalari bilan ham javob tanlash mumkin</p>
+            </div>
+          </div>
+
+          <div id="testResult" class="hidden">
+            <div class="card result-hero" id="resultHero"></div>
+            <div class="card">
+              <div class="card-head">
+                <h3>Javoblar tahlili</h3>
+              </div>
+              <div id="reviewBox"></div>
+            </div>
+            <div class="row-actions">
+              <button class="btn btn-primary" onclick="backToSetup()">Yangi test</button>
+              <button class="btn btn-ghost" onclick="showSection('natijalar')">Natijalar</button>
+              <button class="btn btn-ghost" onclick="showSection('reyting')">Reyting</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== KARTOCHKALAR ===== -->
+        <section id="view-kartochka" class="view">
+          <div class="view-head">
+            <h1>Kartochkalar</h1>
+            <p>Kartochkani bosib aylantiring — formulalar va faktlarni yodlang</p>
+          </div>
+          <div class="chips" id="fcChips"></div>
+          <div class="fc-wrap">
+            <div class="flip-card" id="flipCard" onclick="this.classList.toggle('flipped')">
+              <div class="flip-inner">
+                <div class="flip-face front"><span class="fc-label">Savol</span>
+                  <p id="fcFront"></p><span class="fc-hint">bosib aylantiring</span>
+                </div>
+                <div class="flip-face back"><span class="fc-label">Javob</span>
+                  <p id="fcBack"></p>
+                </div>
+              </div>
+            </div>
+            <div class="fc-controls">
+              <button class="btn btn-ghost" onclick="prevFC()">‹ Oldingi</button>
+              <span class="tag tag-plain" id="fcCounter"></span>
+              <button class="btn btn-primary icon-btn" onclick="shuffleFC()" title="Aralashtirish">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="16 3 21 3 21 8" />
+                  <line x1="4" y1="20" x2="21" y2="3" />
+                  <polyline points="21 16 21 21 16 21" />
+                  <line x1="15" y1="15" x2="21" y2="21" />
+                  <line x1="4" y1="4" x2="9" y2="9" />
+                </svg>
+              </button>
+              <button class="btn btn-ghost" onclick="nextFC()">Keyingi ›</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== NATIJALAR ===== -->
+        <section id="view-natijalar" class="view">
+          <div class="view-head">
+            <h1>Natijalar</h1>
+            <p>Testlar tarixi va umumiy statistika</p>
+          </div>
+          <div id="resultsContent"></div>
+        </section>
+
+        <!-- ===== REYTING ===== -->
+        <section id="view-reyting" class="view">
+          <div class="view-head">
+            <h1>Reyting</h1>
+            <p>Sinfingizdagi eng ko'p ball to'plagan o'quvchilar</p>
+          </div>
+          <div class="pill-row" style="margin-bottom:16px">
+            <button class="pill active" id="tabAll" onclick="setLbTab('all')">Umumiy</button>
+            <button class="pill" id="tabWeek" onclick="setLbTab('week')">Haftalik</button>
+          </div>
+          <div class="card" id="lbBox"></div>
+        </section>
+
+        <!-- ===== YOZUVLAR ===== -->
+        <section id="view-yozuvlar" class="view">
+          <div class="view-head">
+            <h1>Yozuvlar</h1>
+            <p>Muhim ma'lumot va eslatmalarni shu yerda saqlang</p>
+          </div>
+          <div class="card note-form">
+            <textarea id="noteInput" class="input" rows="3" placeholder="Yozuv matnini kiriting..."></textarea>
+            <button class="btn btn-primary" onclick="addNote()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Qo'shish
+            </button>
+          </div>
+          <div id="notesList"></div>
+        </section>
+
+        <!-- ===== PROFIL ===== -->
+        <section id="view-profil" class="view">
+          <div class="view-head">
+            <h1>Profil</h1>
+            <p>Shaxsiy ma'lumot va yutuqlaringiz</p>
+          </div>
+          <div class="card profile-card">
+            <div class="avatar" id="pAvatar">S</div>
+            <div class="profile-main">
+              <input id="nameInput" class="input" maxlength="30" placeholder="Ismingizni kiriting">
+              <select id="gradeSel" class="input" onchange="setGrade(this.value)"></select>
+              <button class="btn btn-primary" onclick="saveName()">Saqlash</button>
+            </div>
+          </div>
+          <div class="stat-grid" id="pStats"></div>
+          <div class="card">
+            <div class="card-head">
+              <h3>Daraja</h3>
+            </div>
+            <div id="pLevel"></div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <h3>Nishonlar</h3><span class="tag" id="badgeCount"></span>
+            </div>
+            <div class="badges" id="pBadges"></div>
+          </div>
+          <div class="card danger-zone">
+            <div>
+              <h3>Xavfli zona</h3>
+              <p>Barcha ma'lumotlar o'chiriladi</p>
+            </div>
+            <button class="btn btn-danger" onclick="resetAll()">Tozalash</button>
+          </div>
+        </section>
+
+        <!-- ===== SOZLAMALAR ===== -->
+        <section id="view-sozlamalar" class="view">
+          <div class="view-head">
+            <h1>Sozlamalar</h1>
+            <p>Platformani o'zingizga moslashtiring</p>
+          </div>
+          <div class="card set-row">
+            <div>
+              <h3>Mavzu</h3>
+              <p>Yorug' yoki qorong'i rejim</p>
+            </div>
+            <div class="pill-row">
+              <button class="pill" id="thLight" onclick="setTheme('light')">Yorug'</button>
+              <button class="pill" id="thDark" onclick="setTheme('dark')">Qorong'i</button>
+            </div>
+          </div>
+          <div class="card set-row">
+            <div>
+              <h3>Ovozli signal</h3>
+              <p>Test yakunida kichik signal eshitiladi</p>
+            </div>
+            <label class="switch"><input type="checkbox" id="soundTgl" onchange="toggleSound(this.checked)"><span
+                class="slider"></span></label>
+          </div>
+          <div class="card" style="margin-bottom:14px">
+            <div class="card-head">
+              <h3>🤖 AI ulash</h3>
+              <span class="tag" id="apiKeyStatus">Ulanmagan</span>
+            </div>
+            <div class="api-form">
+              <select id="apiProviderSel" class="input" onchange="onProviderChange()">
+                <option value="gemini">Google Gemini — BEPUL ✅</option>
+                <option value="openai">OpenAI ChatGPT — pullik</option>
+              </select>
+              <input type="password" id="apiKeyInput" class="input"
+                placeholder="Google AI Studio kaliti (AIza... bilan boshlanadi)">
+              <select id="apiModelSel" class="input"></select>
+              <button class="btn btn-primary" onclick="saveApiKey()">Saqlash va ulash</button>
+              <button class="btn btn-ghost" onclick="clearApiKey()">Uzish</button>
+            </div>
+            <p class="api-hint" id="apiHint">
+              Kalit olish: <b>aistudio.google.com</b> → Google akkaunt bilan kiring → "Get API key" → "Create API key".
+              Karta kerak emas, to'lov yo'q!
+            </p>
+          </div>
+          <div class="card set-row">
+            <div>
+              <h3>Ma'lumotlarni eksport qilish</h3>
+              <p>Barcha natijalarni JSON fayl sifatida saqlash</p>
+            </div>
+            <button class="btn btn-ghost" onclick="exportData()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Yuklab olish
+            </button>
+          </div>
+          <div class="card set-row danger">
+            <div>
+              <h3>Tozalash</h3>
+              <p>Barcha progress o'chiriladi</p>
+            </div>
+            <button class="btn btn-danger" onclick="resetAll()">O'chirish</button>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">AI Study — o'quvchilar uchun aqlli platforma · 2025</footer>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:14px">
+    <div class="card-head">
+      <h3>🤖 AI ulash</h3>
+      <span class="tag" id="apiKeyStatus">Ulanmagan</span>
+    </div>
+    <div class="api-form">
+      <select id="apiProviderSel" class="input" onchange="onProviderChange()">
+        <option value="gemini">Google Gemini — BEPUL ✅</option>
+        <option value="openai">OpenAI ChatGPT — pullik</option>
+      </select>
+      <input type="password" id="apiKeyInput" class="input"
+        placeholder="Google AI Studio kaliti (AIza... bilan boshlanadi)">
+      <select id="apiModelSel" class="input"></select>
+      <button class="btn btn-primary" onclick="saveApiKey()">Saqlash va ulash</button>
+      <button class="btn btn-ghost" onclick="clearApiKey()">Uzish</button>
+    </div>
+    <p class="api-hint" id="apiHint">
+      Kalit olish: <b>aistudio.google.com</b> → Google akkaunt bilan kiring → "Get API key" → "Create API key". Karta
+      kerak emas, to'lov yo'q!
+    </p>
+  </div>
+  <!-- ===== SINF TANLASH (BIRINCHI KIRISHDA) ===== -->
+  <div id="onboard" class="onboard hidden">
+    <div class="onboard-card">
+      <div class="onboard-icon">🎓</div>
+      <h2>Xush kelibsiz!</h2>
+      <p>Sinfingizni tanlang — fanlar, savollar, testlar va reyting shunga moslashadi</p>
+      <div class="grade-grid" id="gradeGrid"></div>
+    </div>
+  </div>
+
+  <div id="toastBox"></div>
+  <div id="confettiLayer"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>
