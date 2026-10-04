@@ -306,10 +306,7 @@
 
         <!-- ===== SOZLAMALAR ===== -->
         <section id="view-sozlamalar" class="view">
-          <div class="view-head">
-            <h1>Sozlamalar</h1>
-            <p>Platformani o'zingizga moslashtiring</p>
-          </div>
+         <div class="view-head"><h1 onclick="secretTap()" style="cursor:pointer;user-select:none">Sozlamalar</h1><p>Platformani o'zingizga moslashtiring</p></div>
           <div class="card set-row">
             <div>
               <h3>Mavzu</h3>
@@ -328,27 +325,7 @@
             <label class="switch"><input type="checkbox" id="soundTgl" onchange="toggleSound(this.checked)"><span
                 class="slider"></span></label>
           </div>
-          <div class="card" style="margin-bottom:14px">
-            <div class="card-head">
-              <h3>🤖 AI ulash</h3>
-              <span class="tag" id="apiKeyStatus">Ulanmagan</span>
-            </div>
-            <div class="api-form">
-              <select id="apiProviderSel" class="input" onchange="onProviderChange()">
-                <option value="gemini">Google Gemini — BEPUL ✅</option>
-                <option value="openai">OpenAI ChatGPT — pullik</option>
-              </select>
-              <input type="password" id="apiKeyInput" class="input"
-                placeholder="Google AI Studio kaliti (AIza... bilan boshlanadi)">
-              <select id="apiModelSel" class="input"></select>
-              <button class="btn btn-primary" onclick="saveApiKey()">Saqlash va ulash</button>
-              <button class="btn btn-ghost" onclick="clearApiKey()">Uzish</button>
-            </div>
-            <p class="api-hint" id="apiHint">
-              Kalit olish: <b>aistudio.google.com</b> → Google akkaunt bilan kiring → "Get API key" → "Create API key".
-              Karta kerak emas, to'lov yo'q!
-            </p>
-          </div>
+        
           <div class="card set-row">
             <div>
               <h3>Ma'lumotlarni eksport qilish</h3>
