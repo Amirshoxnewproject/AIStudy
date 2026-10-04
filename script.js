@@ -296,8 +296,10 @@ let saved = {};
 try { saved = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) { }
 let state = Object.assign({}, DEFAULTS, saved);
 
-function save() { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
-
+function save() {
+  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  if (typeof currentUser !== "undefined" && currentUser) saveCurrentUserState();
+}
 let setup = { subject: null, diff: 0 };
 let current = [], idx = 0, answers = [], timeLeft = 0, tm = null;
 let lbTab = "all";
@@ -1083,7 +1085,125 @@ function resetAll() {
     localStorage.removeItem(STORE_KEY);
     location.reload();
 }
+/* ============ KIRISH TIZIMI (LOCAL — Firebase'siz) ============ */
+const USERS_KEY = "ilmAIUsers";
+const ACTIVE_KEY = "ilmAIActiveUser";
 
+let currentUser = null;
+
+function getUsers() {
+  try { return JSON.parse(localStorage.getItem(USERS_KEY)) || {}; }
+  catch (e) { return {}; }
+}
+function setUsers(u) { localStorage.setItem(USERS_KEY, JSON.stringify(u)); }
+
+/* Parolni ochiq saqlamaymiz — oddiy hash */
+function hashPass(p) {
+  let h = 0;
+  for (let i = 0; i < p.length; i++) h = ((h << 5) - h + p.charCodeAt(i)) | 0;
+  return "h" + Math.abs(h);
+}
+
+function saveCurrentUserState() {
+  if (!currentUser) return;
+  const users = getUsers();
+  if (users[currentUser]) {
+    users[currentUser].state = JSON.parse(JSON.stringify(state));
+    users[currentUser].state.savedAt = Date.now();
+    setUsers(users);
+  }
+}
+
+function initLocalAuth() {
+  const email = localStorage.getItem(ACTIVE_KEY);
+  if (email) {
+    const users = getUsers();
+    if (users[email]) {
+      currentUser = email;
+      state = Object.assign({}, DEFAULTS, users[email].state);
+      localStorage.setItem(STORE_KEY, JSON.stringify(state));
+      chatHistory = [];
+    }
+  }
+  updateAuthUI();
+}
+
+function loginAs(email) {
+  const users = getUsers();
+  localStorage.setItem(ACTIVE_KEY, email);
+  state = Object.assign({}, DEFAULTS, users[email].state);
+  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  currentUser = email;
+  chatHistory = [];
+  refreshAll();
+  updateAuthUI();
+}
+
+/* --- SIGN UP (yangi akkaunt) --- */
+function emailSignUp() {
+  const email = $("emailInput").value.trim().toLowerCase();
+  const pass = $("passInput").value;
+  if (!email || !pass) { toast("Email va parolni kiriting", "error"); return; }
+  if (!email.includes("@") || email.length < 5) { toast("Email noto'g'ri yozilgan", "error"); return; }
+  if (pass.length < 6) { toast("Parol kamida 6 belgidan iborat bo'lsin", "error"); return; }
+  const users = getUsers();
+  if (users[email]) { toast("Bu email band — 'Log in' tugmasini bosing", "error"); return; }
+
+  // Yangi akkaunt — hozirgi progressingiz bilan boshlanadi! 🎁
+  const st = JSON.parse(JSON.stringify(state));
+  if (!st.name) st.name = email.split("@")[0];
+  users[email] = { pass: hashPass(pass), state: st };
+  setUsers(users);
+  loginAs(email);
+  closeLogin();
+  toast("Akkaunt yaratildi ✅ Progressingiz saqlanadi!");
+}
+
+/* --- LOG IN (mavjud akkaunt) --- */
+function emailLogin() {
+  const email = $("emailInput").value.trim().toLowerCase();
+  const pass = $("passInput").value;
+  if (!email || !pass) { toast("Email va parolni kiriting", "error"); return; }
+  const users = getUsers();
+  const u = users[email];
+  if (!u) { toast("Bunday akkaunt yo'q — 'Sign up' bosing", "error"); return; }
+  if (u.pass !== hashPass(pass)) { toast("Parol xato!", "error"); return; }
+  loginAs(email);
+  closeLogin();
+}
+
+/* --- CHIQISH --- */
+function localLogout() {
+  saveCurrentUserState();
+  localStorage.removeItem(ACTIVE_KEY);
+  currentUser = null;
+  state = Object.assign({}, DEFAULTS);
+  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  chatHistory = [];
+  refreshAll();
+  updateAuthUI();
+  toast("Hisobdan chiqdingiz — ma'lumotlar akkauntda saqlandi ✅");
+}
+
+function toggleAuth() {
+  if (currentUser) localLogout();
+  else showLogin();
+}
+
+function showLogin() { $("loginModal").classList.remove("hidden"); }
+function closeLogin() { $("loginModal").classList.add("hidden"); }
+
+function updateAuthUI() {
+  const btn = $("authBtn");
+  if (!btn) return;
+  if (currentUser) {
+    $("authBtnText").textContent = "Chiqish · " + (state.name || currentUser.split("@")[0]);
+    btn.classList.add("in");
+  } else {
+    $("authBtnText").textContent = "Hisobga kirish";
+    btn.classList.remove("in");
+  }
+}
 /* ============ ISHGA TUSHIRISH ============ */
 document.addEventListener("DOMContentLoaded", () => {
     if (state.weekId !== currentWeek()) { state.weekId = currentWeek(); state.weeklyPoints = 0; save(); }
@@ -1098,6 +1218,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderFC();
     renderNotes();
     $("soundTgl").checked = state.sound;
+      initLocalAuth();
 
     const provSel = $("apiProviderSel");
     if (provSel) {
