@@ -1,0 +1,16 @@
+{
+  "name": "IlmAI — O'quv platformasi",
+  "short_name": "IlmAI",
+  "description": "O'quvchilar uchun AI yordamchi — testlar, fanlar, reyting",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0B0F1A",
+  "theme_color": "#6366F1",
+  "lang": "uz",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
