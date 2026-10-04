@@ -1233,5 +1233,8 @@ document.addEventListener("DOMContentLoaded", () => {
     renderDashboard();
     addMsg(`Salom! Men <b>AI Study</b> yordamchingizman${state.grade ? " — siz " + state.grade + "-sinf o'quvchisisiz" : ""}. Fanlar bo'yicha savol bering — masalan: <i>"Pifagor teoremasi nima?"</i>`, "bot");
 });
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+  }
 
 /* ============ 2-QISM TUGADI ============ */
