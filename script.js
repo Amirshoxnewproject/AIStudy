@@ -50,85 +50,85 @@ const TESTS = {
         { q: "7 × 8 ning natijasi?", o: ["54", "56", "58", "64"], a: 1, l: 1, g: [2, 4], e: "Ko'paytirish jadvalidan: 7 × 8 = 56." },
         { q: "18 sonining yarmi qancha?", o: ["6", "8", "9", "12"], a: 2, l: 2, g: [2, 4], e: "18 ÷ 2 = 9." },
         { q: "Uchburchakning qancha tomoni bor?", o: ["2", "3", "4", "5"], a: 1, l: 1, g: [1, 4], e: "Uchburchak — 3 tomonli shakl." },
-        { q: "1/2 + 1/4 = ?", o: ["2/6", "3/4", "1/6", "2/4"], a: 1, l: 2, g: [5, 6], e: "Umumiy maxrajga keltiramiz: 2/4 + 1/4 = 3/4." },
+        { q: "1/2 + 1/4 = ?", o: ["2/6", "3/4", "1/6", "2/4"], a: 1, l: 2, g: [5, 6], e: "Umumiy maxraj: 2/4 + 1/4 = 3/4." },
         { q: "200 sonining 15% i qancha?", o: ["15", "20", "30", "35"], a: 2, l: 2, g: [5, 6], e: "15% = 0,15; 200 × 0,15 = 30." },
-        { q: "10, 12, 14 sonlarining o'rtacha arifmetigi?", o: ["11", "12", "13", "14"], a: 1, l: 2, g: [5, 6], e: "(10 + 12 + 14) ÷ 3 = 36 ÷ 3 = 12." },
-        { q: "Kvadratning tomoni 9 sm. Perimetri?", o: ["18 sm", "27 sm", "36 sm", "81 sm"], a: 2, l: 1, g: [5, 6], e: "P = 4a = 4 × 9 = 36 sm." },
+        { q: "10, 12, 14 sonlarining o'rtacha arifmetigi?", o: ["11", "12", "13", "14"], a: 1, l: 2, g: [5, 6], e: "(10+12+14) ÷ 3 = 12." },
+        { q: "Kvadratning tomoni 9 sm. Perimetri?", o: ["18 sm", "27 sm", "36 sm", "81 sm"], a: 2, l: 1, g: [5, 6], e: "P = 4a = 36 sm." },
         { q: "x + 5 = 12. x = ?", o: ["5", "6", "7", "8"], a: 2, l: 1, g: [7, 8], e: "x = 12 − 5 = 7." },
-        { q: "(a + b)² formulasining ochilishi?", o: ["a² + b²", "a² + 2ab + b²", "a² − b²", "2ab"], a: 1, l: 2, g: [7, 8], e: "Kvadratlar yig'indisi formulasi: a² + 2ab + b²." },
-        { q: "√49 ning qiymati?", o: ["6", "7", "8", "9"], a: 1, l: 1, g: [7, 8], e: "7² = 49, demak √49 = 7." },
-        { q: "To'g'ri burchakli uchburchakda katetlar 6 va 8. Gipotenuza?", o: ["10", "12", "14", "9"], a: 0, l: 2, g: [8, 11], e: "Pifagor: c² = 6² + 8² = 100, demak c = 10." },
-        { q: "Doira uzunligi qanday hisoblanadi?", o: ["C = πr²", "C = 2πr", "C = πd²", "C = 4r"], a: 1, l: 3, g: [7, 11], e: "C = 2πr = πd (r — radius, d — diametr)." },
-        { q: "Kvadrat tenglamaning diskriminanti formulasi?", o: ["D = b² − 4ac", "D = b² + 4ac", "D = 4ac − b²", "D = 2b − 4ac"], a: 0, l: 2, g: [9, 11], e: "ax² + bx + c = 0 → D = b² − 4ac." },
-        { q: "sin 30° ning qiymati?", o: ["1/2", "√3/2", "1", "0"], a: 0, l: 2, g: [9, 11], e: "sin 30° = 1/2 — asosiy trigonometrik qiymat." },
-        { q: "Arifmetik progressiya n-chi a'zosi formulasi?", o: ["aₙ = a₁ + (n−1)d", "aₙ = a₁ × dⁿ", "aₙ = a₁ − nd", "aₙ = n × d"], a: 0, l: 3, g: [9, 11], e: "aₙ = a₁ + (n−1)d." },
-        { q: "log₂ 8 ning qiymati?", o: ["2", "3", "4", "8"], a: 1, l: 3, g: [10, 11], e: "2³ = 8, demak log₂ 8 = 3." }
+        { q: "(a + b)² ning ochilishi?", o: ["a² + b²", "a² + 2ab + b²", "a² − b²", "2ab"], a: 1, l: 2, g: [7, 8], e: "a² + 2ab + b²." },
+        { q: "√49 ning qiymati?", o: ["6", "7", "8", "9"], a: 1, l: 1, g: [7, 8], e: "7² = 49." },
+        { q: "Katetlar 6 va 8. Gipotenuza?", o: ["10", "12", "14", "9"], a: 0, l: 2, g: [8, 11], e: "Pifagor: c² = 36 + 64 = 100, c = 10." },
+        { q: "Doira uzunligi formulasi?", o: ["C = πr²", "C = 2πr", "C = πd²", "C = 4r"], a: 1, l: 3, g: [7, 11], e: "C = 2πr = πd." },
+        { q: "Diskriminant formulasi?", o: ["D = b² − 4ac", "D = b² + 4ac", "D = 4ac − b²", "D = 2b − 4ac"], a: 0, l: 2, g: [9, 11], e: "ax² + bx + c = 0 → D = b² − 4ac." },
+        { q: "sin 30° ning qiymati?", o: ["1/2", "√3/2", "1", "0"], a: 0, l: 2, g: [9, 11], e: "sin 30° = 1/2." },
+        { q: "Arifmetik progressiya formulasi?", o: ["aₙ = a₁ + (n−1)d", "aₙ = a₁ × dⁿ", "aₙ = a₁ − nd", "aₙ = n × d"], a: 0, l: 3, g: [9, 11], e: "aₙ = a₁ + (n−1)d." },
+        { q: "log₂ 8 ning qiymati?", o: ["2", "3", "4", "8"], a: 1, l: 3, g: [10, 11], e: "2³ = 8, demak 3." }
     ],
     ingliz: [
-        { q: "'Red' so'zining tarjimasi?", o: ["Ko'k", "Qizil", "Yashil", "Sariq"], a: 1, l: 1, g: [1, 4], e: "Red = qizil rang." },
-        { q: "'Cat' qaysi hayvon?", o: ["It", "Mushuk", "Qush", "Ot"], a: 1, l: 1, g: [1, 4], e: "Cat = mushuk, dog = it." },
-        { q: "'3' soni ingliz tilida qanday?", o: ["Two", "Three", "Four", "Ten"], a: 1, l: 1, g: [1, 4], e: "1 — one, 2 — two, 3 — three." },
+        { q: "'Red' so'zining tarjimasi?", o: ["Ko'k", "Qizil", "Yashil", "Sariq"], a: 1, l: 1, g: [1, 4], e: "Red = qizil." },
+        { q: "'Cat' qaysi hayvon?", o: ["It", "Mushuk", "Qush", "Ot"], a: 1, l: 1, g: [1, 4], e: "Cat = mushuk." },
+        { q: "'3' ingliz tilida?", o: ["Two", "Three", "Four", "Ten"], a: 1, l: 1, g: [1, 4], e: "Three." },
         { q: "'Apple' nima degani?", o: ["Olma", "Banan", "Uzum", "Nok"], a: 0, l: 1, g: [1, 4], e: "Apple = olma." },
         { q: "'Book' so'zining tarjimasi?", o: ["Qalam", "Stol", "Kitob", "Deraza"], a: 2, l: 1, g: [5, 6], e: "Book = kitob." },
-        { q: "She ___ a student.", o: ["am", "is", "are", "be"], a: 1, l: 1, g: [5, 6], e: "She — 3-shaxs birlik, shuning uchun is." },
-        { q: "___ you like pizza?", o: ["Do", "Does", "Is", "Are"], a: 0, l: 2, g: [5, 6], e: "You bilan do ishlatiladi: Do you like...?" },
-        { q: "'Boxes' so'zi nimani anglatadi?", o: ["Quti", "Qutilar", "Kitob", "Stol"], a: 1, l: 2, g: [5, 6], e: "Ko'plik: box → boxes." },
-        { q: "'Go' fe'lining Past Simple shakli?", o: ["goed", "gone", "went", "going"], a: 2, l: 2, g: [7, 8], e: "Go — noto'g'ri fe'l: go → went → gone." },
-        { q: "big so'zining qiyosiy darajasi?", o: ["bigger", "more big", "biggest", "biger"], a: 0, l: 2, g: [7, 8], e: "Qisqa sifat: big → bigger → the biggest." },
-        { q: "There ___ many books on the table.", o: ["is", "are", "was", "be"], a: 1, l: 1, g: [7, 8], e: "Ko'plik (books) bilan are ishlatiladi." },
-        { q: "'Yaxshiroq' so'zining tarjimasi?", o: ["good", "better", "best", "bad"], a: 1, l: 2, g: [7, 8], e: "good → better → the best." },
-        { q: "I have lived here ___ 2010.", o: ["for", "since", "from", "at"], a: 1, l: 3, g: [9, 11], e: "Aniq vaqt nuqtasi bilan since, davr bilan for keladi." },
-        { q: "If I ___ rich, I would travel the world.", o: ["am", "was", "were", "be"], a: 2, l: 3, g: [9, 11], e: "Ikkinchi shart: If I were... (subjonktiv)." },
-        { q: "The letter ___ written yesterday.", o: ["is", "was", "were", "be"], a: 1, l: 3, g: [9, 11], e: "Passive: was/were + V3. O'tgan zamon — was." },
-        { q: "'Look forward to' nima degani?", o: ["Orqaga qarash", "Kutib turish (intiqlik bilan)", "Ilgariga qarash", "Yo'qotish"], a: 1, l: 3, g: [9, 11], e: "Look forward to — intiqlik bilan kutmoq." }
+        { q: "She ___ a student.", o: ["am", "is", "are", "be"], a: 1, l: 1, g: [5, 6], e: "She — is." },
+        { q: "___ you like pizza?", o: ["Do", "Does", "Is", "Are"], a: 0, l: 2, g: [5, 6], e: "Do you like...?" },
+        { q: "'Boxes' nimani anglatadi?", o: ["Quti", "Qutilar", "Kitob", "Stol"], a: 1, l: 2, g: [5, 6], e: "Ko'plik: box → boxes." },
+        { q: "'Go' ning Past Simple shakli?", o: ["goed", "gone", "went", "going"], a: 2, l: 2, g: [7, 8], e: "go → went → gone." },
+        { q: "big ning qiyosiy darajasi?", o: ["bigger", "more big", "biggest", "biger"], a: 0, l: 2, g: [7, 8], e: "big → bigger." },
+        { q: "There ___ many books.", o: ["is", "are", "was", "be"], a: 1, l: 1, g: [7, 8], e: "Ko'plik bilan are." },
+        { q: "'Yaxshiroq' tarjimasi?", o: ["good", "better", "best", "bad"], a: 1, l: 2, g: [7, 8], e: "better." },
+        { q: "I have lived here ___ 2010.", o: ["for", "since", "from", "at"], a: 1, l: 3, g: [9, 11], e: "Aniq vaqt — since." },
+        { q: "If I ___ rich, I would travel.", o: ["am", "was", "were", "be"], a: 2, l: 3, g: [9, 11], e: "If I were... (subjonktiv)." },
+        { q: "The letter ___ written yesterday.", o: ["is", "was", "were", "be"], a: 1, l: 3, g: [9, 11], e: "Passive: was + V3." },
+        { q: "'Look forward to' degani?", o: ["Orqaga qarash", "Kutib turish", "Ilgariga qarash", "Yo'qotish"], a: 1, l: 3, g: [9, 11], e: "Intiqlik bilan kutmoq." }
     ],
     fizika: [
-        { q: "Tezlikning o'lchov birligi?", o: ["kg", "m/s", "N", "J"], a: 1, l: 1, g: [7, 11], e: "v = s/t, demak birligi metr/sekund." },
-        { q: "Zichlikning formulasi?", o: ["ρ = m × V", "ρ = m / V", "ρ = V / m", "ρ = m + V"], a: 1, l: 2, g: [7, 8], e: "ρ = m/V — massa hajmga bo'linadi." },
-        { q: "Og'irlik kuchi qanday hisoblanadi?", o: ["F = m × g", "F = m + g", "F = m / g", "F = g / m"], a: 0, l: 1, g: [7, 11], e: "F = mg, yerda g ≈ 9,8 m/s²." },
-        { q: "Quvvatning o'lchov birligi?", o: ["Joul", "Vatt", "Nyuton", "Paskal"], a: 1, l: 2, g: [7, 11], e: "Quvvat — Vatt (Vt) bilan o'lchanadi." },
-        { q: "Nyutonning ikkinchi qonuni?", o: ["F = m × a", "F = m / a", "F = m + a", "F = a² / m"], a: 0, l: 2, g: [9, 11], e: "Kuch = massa × tezlanish." },
-        { q: "Yorug'likning vakuumdagi tezligi?", o: ["300 km/s", "3000 km/s", "300 000 km/s", "3 mln km/s"], a: 2, l: 2, g: [9, 11], e: "c ≈ 3×10⁸ m/s = 300 000 km/s." },
-        { q: "Mexanik ish qanday hisoblanadi?", o: ["A = F + s", "A = F × s", "A = F / s", "A = s / F"], a: 1, l: 3, g: [9, 11], e: "A = F·s — kuch yo'nalishidagi ko'chishga ko'paytiriladi." },
-        { q: "Jismning impulsi qanday ifodalanadi?", o: ["p = m × v", "p = m / v", "p = m + v", "p = v / m"], a: 0, l: 3, g: [10, 11], e: "Impuls p = mv — vektor kattalik." }
+        { q: "Tezlikning o'lchov birligi?", o: ["kg", "m/s", "N", "J"], a: 1, l: 1, g: [7, 11], e: "v = s/t → m/s." },
+        { q: "Zichlik formulasi?", o: ["ρ = m × V", "ρ = m / V", "ρ = V / m", "ρ = m + V"], a: 1, l: 2, g: [7, 8], e: "ρ = m/V." },
+        { q: "Og'irlik kuchi formulasi?", o: ["F = m × g", "F = m + g", "F = m / g", "F = g / m"], a: 0, l: 1, g: [7, 11], e: "F = mg." },
+        { q: "Quvvatning o'lchov birligi?", o: ["Joul", "Vatt", "Nyuton", "Paskal"], a: 1, l: 2, g: [7, 11], e: "Vatt (Vt)." },
+        { q: "Nyutonning 2-qonuni?", o: ["F = m × a", "F = m / a", "F = m + a", "F = a² / m"], a: 0, l: 2, g: [9, 11], e: "F = ma." },
+        { q: "Yorug'lik tezligi?", o: ["300 km/s", "3000 km/s", "300 000 km/s", "3 mln km/s"], a: 2, l: 2, g: [9, 11], e: "c = 300 000 km/s." },
+        { q: "Mexanik ish formulasi?", o: ["A = F + s", "A = F × s", "A = F / s", "A = s / F"], a: 1, l: 3, g: [9, 11], e: "A = F·s." },
+        { q: "Impuls ifodasi?", o: ["p = m × v", "p = m / v", "p = m + v", "p = v / m"], a: 0, l: 3, g: [10, 11], e: "p = mv." }
     ],
     kimyo: [
-        { q: "Suvning kimyoviy formulasi?", o: ["CO₂", "H₂O", "O₂", "H₂O₂"], a: 1, l: 1, g: [8, 11], e: "Suv — 2 vodorod + 1 kislorod." },
-        { q: "Osh tuzining formulasi?", o: ["KCl", "NaCl", "CaCl₂", "MgCl₂"], a: 1, l: 1, g: [8, 11], e: "NaCl — natriy xlorid." },
-        { q: "Atomning musbat zaryadlangon zarrasi?", o: ["Elektron", "Neytron", "Proton", "Foton"], a: 2, l: 2, g: [8, 11], e: "Proton — musbat, elektron — manfiy zaryadli." },
-        { q: "Havodagi eng ko'p gaz?", o: ["Kislorod", "Azot", "Vodorod", "Uglerod"], a: 1, l: 2, g: [8, 11], e: "Havo tarkibida ~78% azot, ~21% kislorod." },
-        { q: "Modda zarralarining o'z-o'zidan aralashishi?", o: ["Diffuziya", "Elektroliz", "Fotosintez", "Bug'lanish"], a: 0, l: 2, g: [8, 9], e: "Diffuziya — zarralarning tartibsiz harakati natijasida aralashishi." },
-        { q: "Muhit pH < 7 bo'lsa, u qanday?", o: ["Ishqoriy", "Kislotali", "Neytral", "Tuz"], a: 1, l: 2, g: [9, 11], e: "pH<7 — kislotali, pH>7 — ishqoriy, pH=7 — neytral." },
-        { q: "Avogadro soni qancha?", o: ["6,02×10²³", "3,14×10⁸", "9,8×10³", "1,6×10⁻¹⁹"], a: 0, l: 3, g: [10, 11], e: "1 mol modda 6,02×10²³ zarradan iborat." },
-        { q: "H₂SO₄ qanday kislota?", o: ["Xlorid", "Sulfat", "Nitrat", "Fosfat"], a: 1, l: 3, g: [10, 11], e: "Sulfat kislota — kuchli kislota." }
+        { q: "Suvning formulasi?", o: ["CO₂", "H₂O", "O₂", "H₂O₂"], a: 1, l: 1, g: [8, 11], e: "H₂O." },
+        { q: "Osh tuzi formulasi?", o: ["KCl", "NaCl", "CaCl₂", "MgCl₂"], a: 1, l: 1, g: [8, 11], e: "NaCl." },
+        { q: "Atomning musbat zarrasi?", o: ["Elektron", "Neytron", "Proton", "Foton"], a: 2, l: 2, g: [8, 11], e: "Proton." },
+        { q: "Havodagi eng ko'p gaz?", o: ["Kislorod", "Azot", "Vodorod", "Uglerod"], a: 1, l: 2, g: [8, 11], e: "~78% azot." },
+        { q: "Zarralarning o'z-o'zidan aralashishi?", o: ["Diffuziya", "Elektroliz", "Fotosintez", "Bug'lanish"], a: 0, l: 2, g: [8, 9], e: "Diffuziya." },
+        { q: "pH < 7 bo'lsa, muhit qanday?", o: ["Ishqoriy", "Kislotali", "Neytral", "Tuz"], a: 1, l: 2, g: [9, 11], e: "Kislotali." },
+        { q: "Avogadro soni?", o: ["6,02×10²³", "3,14×10⁸", "9,8×10³", "1,6×10⁻¹⁹"], a: 0, l: 3, g: [10, 11], e: "6,02×10²³." },
+        { q: "H₂SO₄ qanday kislota?", o: ["Xlorid", "Sulfat", "Nitrat", "Fosfat"], a: 1, l: 3, g: [10, 11], e: "Sulfat kislota." }
     ],
     biologiya: [
-        { q: "Hayotning asosiy struktura birligi?", o: ["To'qima", "Organ", "Hujayra", "Organizm"], a: 2, l: 1, g: [5, 11], e: "Hujayra — barcha organizmlarning asosi." },
-        { q: "O'simlik barglaridagi yashil pigment?", o: ["Xlorofill", "Gemoglobin", "Melanin", "Keratin"], a: 0, l: 1, g: [5, 6], e: "Xlorofill — yashil pigment, fotosintezda qatnashadi." },
-        { q: "O'simliklar quyosh nurini nima uchun oladi?", o: ["Nafas olish uchun", "Oziq hosil qilish uchun", "Harakat uchun", "Issiqlik uchun"], a: 1, l: 1, g: [5, 6], e: "Fotosintez orqali oziq modda hosil qiladi." },
-        { q: "Umurtqali hayvonlarga qaysi kiradi?", o: ["Qurt", "Hasharot", "Baliq", "Mollyuska"], a: 2, l: 2, g: [5, 6], e: "Baliq — umurtqali, qolganlari umurtqasiz." },
-        { q: "Fotosintez qaysi organellada kechadi?", o: ["Yadro", "Mitoxondriya", "Xloroplast", "Ribosoma"], a: 2, l: 2, g: [7, 8], e: "Xloroplastda xlorofill yordamida kechadi." },
-        { q: "Voyaga etgan odam skeletida qancha suyak?", o: ["106", "156", "206", "306"], a: 2, l: 2, g: [7, 8], e: "Kattalar skeletida 206 ta suyak bor." },
-        { q: "Qonni tanada haydovchi organ?", o: ["O'pka", "Jigar", "Yurak", "Buyrak"], a: 2, l: 1, g: [7, 11], e: "Yurak — mushak to'qimasidan tuzilgan 'pompa'." },
-        { q: "O'simlik va hayvon hujayrasi asosiy farqi?", o: ["Yadro faqat o'simlikda", "Xloroplast faqat o'simlikda", "Ribosoma faqat hayvonda", "Membrana faqat o'simlikda"], a: 1, l: 2, g: [7, 8], e: "Xloroplast va hujayra devori faqat o'simlik hujayrasida bor." },
-        { q: "Mitoxondriyaning asosiy vazifasi?", o: ["Oqsil sintezi", "Energiya ishlab chiqarish", "Genetik ma'lumot saqlash", "Hazm qilish"], a: 1, l: 3, g: [9, 11], e: "Mitoxondriya — 'energiya stansiyasi', ATP ishlab chiqaradi." },
-        { q: "Odam hujayrasida qancha xromosoma?", o: ["23", "44", "46", "48"], a: 2, l: 3, g: [9, 11], e: "23 juft = 46 xromosoma." },
-        { q: "DNK ning to'liq nomi?", o: ["Deoksiribonuklein kislota", "Ribonuklein kislota", "Nuklein oqsil", "Adenin kislota"], a: 0, l: 3, g: [10, 11], e: "DNK = deoksiribonuklein kislota." },
-        { q: "Genotip va fenotip farqi nimada?", o: ["Farqi yo'q", "Genotip — genlar, fenotip — tashqi belgilar", "Aksincha", "Ikkalasi ham tashqi belgilar"], a: 1, l: 3, g: [10, 11], e: "Genotip — irsiy axborot, fenotip — ko'rinadigan belgilar." }
+        { q: "Hayotning asosiy birligi?", o: ["To'qima", "Organ", "Hujayra", "Organizm"], a: 2, l: 1, g: [5, 11], e: "Hujayra." },
+        { q: "Barglardagi yashil pigment?", o: ["Xlorofill", "Gemoglobin", "Melanin", "Keratin"], a: 0, l: 1, g: [5, 6], e: "Xlorofill." },
+        { q: "O'simliklar quyosh nurini nima uchun oladi?", o: ["Nafas olish", "Oziq hosil qilish", "Harakat", "Issiqlik"], a: 1, l: 1, g: [5, 6], e: "Fotosintez." },
+        { q: "Umurtqali hayvon?", o: ["Qurt", "Hasharot", "Baliq", "Mollyuska"], a: 2, l: 2, g: [5, 6], e: "Baliq." },
+        { q: "Fotosintez qaysi organellada?", o: ["Yadro", "Mitoxondriya", "Xloroplast", "Ribosoma"], a: 2, l: 2, g: [7, 8], e: "Xloroplast." },
+        { q: "Kattalar skeletidagi suyaklar?", o: ["106", "156", "206", "306"], a: 2, l: 2, g: [7, 8], e: "206 ta." },
+        { q: "Qonni haydovchi organ?", o: ["O'pka", "Jigar", "Yurak", "Buyrak"], a: 2, l: 1, g: [7, 11], e: "Yurak." },
+        { q: "O'simlik va hayvon hujayrasi farqi?", o: ["Yadro faqat o'simlikda", "Xloroplast faqat o'simlikda", "Ribosoma faqat hayvonda", "Membrana faqat o'simlikda"], a: 1, l: 2, g: [7, 8], e: "Xloroplast faqat o'simlikda." },
+        { q: "Mitoxondriya vazifasi?", o: ["Oqsil sintezi", "Energiya ishlab chiqarish", "Gen saqlash", "Hazm qilish"], a: 1, l: 3, g: [9, 11], e: "ATP ishlab chiqaradi." },
+        { q: "Odamda nechta xromosoma?", o: ["23", "44", "46", "48"], a: 2, l: 3, g: [9, 11], e: "46 (23 juft)." },
+        { q: "DNK to'liq nomi?", o: ["Deoksiribonuklein kislota", "Ribonuklein kislota", "Nuklein oqsil", "Adenin kislota"], a: 0, l: 3, g: [10, 11], e: "Deoksiribonuklein kislota." },
+        { q: "Genotip va fenotip farqi?", o: ["Farqi yo'q", "Genotip — genlar, fenotip — belgilar", "Aksincha", "Ikkalasi belgilar"], a: 1, l: 3, g: [10, 11], e: "Genotip — genlar, fenotip — tashqi belgilar." }
     ],
     tarix: [
-        { q: "O'zbekiston mustaqilligi e'lon qilingan yil?", o: ["1989", "1990", "1991", "1992"], a: 2, l: 1, g: [5, 11], e: "1991-yil 31-avgust, bayram — 1-sentabr." },
-        { q: "Qadimgi piramidalar qaysi davlatda qurilgan?", o: ["Rim", "Gretsiya", "Misr", "Bobil"], a: 2, l: 1, g: [5, 11], e: "Misr — Giza piramidalari." },
-        { q: "O'zbekiston poytaxti qaysi shahar?", o: ["Samarqand", "Toshkent", "Buxoro", "Xiva"], a: 1, l: 1, g: [5, 6], e: "Toshkent — O'zbekiston poytaxti." },
-        { q: "Buyuk ipak yo'li orqali nima tashilgan?", o: ["Qo'shinlar", "Tovarlar (ipak, ziravor)", "Faqat xatlar", "Faqat oltin"], a: 1, l: 2, g: [5, 6], e: "Ipak yo'li — savdo yo'li: ipak, ziravor, gazlama tashilgan." },
-        { q: "Amir Temur qachon tug'ilgan?", o: ["1326", "1336", "1346", "1356"], a: 1, l: 2, g: [7, 8], e: "1336-yil, Kesh (Shahrisabz) yaqinida." },
-        { q: "Amir Temurning poytaxti qaysi shahar bo'lgan?", o: ["Buxoro", "Samarqand", "Toshkent", "Xiva"], a: 1, l: 2, g: [7, 8], e: "Samarqand — Temuriylar poytaxti." },
-        { q: "Qadimgi Bobil hozirgi qaysi davlat hududida?", o: ["Misr", "Iroq", "Turkiya", "Eron"], a: 1, l: 3, g: [7, 8], e: "Bobil — hozirgi Iroq hududida bo'lgan." },
-        { q: "Buyuk ipak yo'lining markaziy shaharlaridan biri?", o: ["Parij", "Samarqand", "London", "Tokio"], a: 1, l: 3, g: [7, 11], e: "Samarqand — savdo va madaniyat markazi bo'lgan." },
-        { q: "Birinchi jahon urushi qachon boshlangan?", o: ["1912", "1914", "1916", "1918"], a: 1, l: 3, g: [9, 11], e: "1914-yilda boshlanib, 1918-yilda tugagan." },
-        { q: "Ikkinchi jahon urushi qachon tugagan?", o: ["1943", "1944", "1945", "1946"], a: 2, l: 2, g: [9, 11], e: "1945-yil 2-sentabrda tugagan." },
-        { q: "Mustaqillik deklaratsiyasi qabul qilingan sana?", o: ["31-avgust, 1991", "1-sentabr, 1991", "16-dekabr, 1991", "21-mart, 1992"], a: 0, l: 3, g: [9, 11], e: "31-avgust — Deklaratsiya, 1-sentabr — bayram kuni." },
-        { q: "Buyuk geografik kashfiyotlar qaysi asrga to'g'ri keladi?", o: ["XIV asr", "XV–XVI asrlar", "XVII asr", "XVIII asr"], a: 1, l: 3, g: [9, 11], e: "Kolumb (1492), Magellan — XV–XVI asrlar." }
+        { q: "Mustaqillik e'lon qilingan yil?", o: ["1989", "1990", "1991", "1992"], a: 2, l: 1, g: [5, 11], e: "1991-yil 31-avgust." },
+        { q: "Piramidalar qaysi davlatda?", o: ["Rim", "Gretsiya", "Misr", "Bobil"], a: 2, l: 1, g: [5, 11], e: "Misr." },
+        { q: "O'zbekiston poytaxti?", o: ["Samarqand", "Toshkent", "Buxoro", "Xiva"], a: 1, l: 1, g: [5, 6], e: "Toshkent." },
+        { q: "Ipak yo'li orqali nima tashilgan?", o: ["Qo'shinlar", "Tovarlar", "Xatlar", "Oltin"], a: 1, l: 2, g: [5, 6], e: "Savdo tovarlari." },
+        { q: "Amir Temur qachon tug'ilgan?", o: ["1326", "1336", "1346", "1356"], a: 1, l: 2, g: [7, 8], e: "1336-yil." },
+        { q: "Temurning poytaxti?", o: ["Buxoro", "Samarqand", "Toshkent", "Xiva"], a: 1, l: 2, g: [7, 8], e: "Samarqand." },
+        { q: "Bobil hozirgi qayerda?", o: ["Misr", "Iroq", "Turkiya", "Eron"], a: 1, l: 3, g: [7, 8], e: "Iroq." },
+        { q: "Ipak yo'li markazi?", o: ["Parij", "Samarqand", "London", "Tokio"], a: 1, l: 3, g: [7, 11], e: "Samarqand." },
+        { q: "1-jahon urushi qachon boshlangan?", o: ["1912", "1914", "1916", "1918"], a: 1, l: 3, g: [9, 11], e: "1914." },
+        { q: "2-jahon urushi qachon tugagan?", o: ["1943", "1944", "1945", "1946"], a: 2, l: 2, g: [9, 11], e: "1945." },
+        { q: "Mustaqillik deklaratsiyasi sanasi?", o: ["31-avgust, 1991", "1-sentabr, 1991", "16-dekabr, 1991", "21-mart, 1992"], a: 0, l: 3, g: [9, 11], e: "31-avgust, 1991." },
+        { q: "Buyuk kashfiyotlar asri?", o: ["XIV", "XV–XVI", "XVII", "XVIII"], a: 1, l: 3, g: [9, 11], e: "XV–XVI asrlar." }
     ]
 };
 
@@ -136,8 +136,8 @@ const TESTS = {
 const FLASHCARDS = {
     matematika: [
         { f: "Ko'paytirish: 7 × 8", b: "56", g: [2, 4] },
-        { f: "Kvadrat yuzasi", b: "S = a × a = a²", g: [3, 11] },
-        { f: "Kasrlarni qo'shish", b: "Umumiy maxraj topib, maxrajlarni tenglashtirish", g: [5, 6] },
+        { f: "Kvadrat yuzasi", b: "S = a²", g: [3, 11] },
+        { f: "Kasrlarni qo'shish", b: "Umumiy maxraj topiladi", g: [5, 6] },
         { f: "Foiz formulasi", b: "a% dan b → (a × b) / 100", g: [5, 11] },
         { f: "Kvadratlar yig'indisi", b: "(a+b)² = a² + 2ab + b²", g: [7, 11] },
         { f: "Doira uzunligi", b: "C = 2πr", g: [7, 11] },
@@ -150,16 +150,16 @@ const FLASHCARDS = {
         { f: "Ranglar: red, blue, green", b: "qizil, ko'k, yashil", g: [1, 4] },
         { f: "Sonlar: one, two, three", b: "1, 2, 3", g: [1, 4] },
         { f: "to be: I am / He is", b: "bor/bo'lmoq fe'li", g: [5, 6] },
-        { f: "Ko'plik qoidasi", b: "box → boxes, child → children", g: [5, 8] },
+        { f: "Ko'plik qoidasi", b: "box → boxes", g: [5, 8] },
         { f: "Past Simple", b: "work → worked / go → went", g: [7, 11] },
         { f: "Qiyosiy daraja", b: "big → bigger → the biggest", g: [7, 11] },
-        { f: "since / for", b: "since — aniq vaqt (since 2010)<br>for — davr (for 5 years)", g: [9, 11] },
-        { f: "2-shart gap (Conditional 2)", b: "If I were..., I would...", g: [9, 11] }
+        { f: "since / for", b: "since — aniq vaqt, for — davr", g: [9, 11] },
+        { f: "2-shart gap", b: "If I were..., I would...", g: [9, 11] }
     ],
     fizika: [
         { f: "Tezlik", b: "v = s / t", g: [7, 11] },
         { f: "Zichlik", b: "ρ = m / V", g: [7, 8] },
-        { f: "Og'irlik kuchi", b: "F = m × g (g ≈ 9,8 m/s²)", g: [7, 11] },
+        { f: "Og'irlik kuchi", b: "F = m × g", g: [7, 11] },
         { f: "Nyutonning 2-qonuni", b: "F = m × a", g: [9, 11] },
         { f: "Mexanik ish", b: "A = F × s", g: [9, 11] },
         { f: "Kinetik energiya", b: "E = mv² / 2", g: [9, 11] },
@@ -169,44 +169,44 @@ const FLASHCARDS = {
         { f: "Suv formulasi", b: "H₂O", g: [8, 11] },
         { f: "Osh tuzi", b: "NaCl", g: [8, 11] },
         { f: "pH shkalasi", b: "<7 kislota · =7 neytral · >7 ishqoriy", g: [9, 11] },
-        { f: "Avogadro soni", b: "N = 6,02 × 10²³", g: [10, 11] },
-        { f: "Sulfat kislota", b: "H₂SO₄ — kuchli kislota", g: [10, 11] }
+        { f: "Avogadro soni", b: "6,02 × 10²³", g: [10, 11] },
+        { f: "Sulfat kislota", b: "H₂SO₄", g: [10, 11] }
     ],
     biologiya: [
         { f: "Hujayra", b: "Hayotning asosiy birligi", g: [5, 11] },
-        { f: "Xlorofill", b: "O'simliklardagi yashil pigment", g: [5, 11] },
+        { f: "Xlorofill", b: "Yashil pigment", g: [5, 11] },
         { f: "Fotosintez", b: "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂", g: [7, 11] },
-        { f: "Suyaklar soni (kattada)", b: "206", g: [7, 8] },
+        { f: "Suyaklar soni", b: "206", g: [7, 8] },
         { f: "Mitoxondriya", b: "Energiya (ATP) ishlab chiqaradi", g: [9, 11] },
-        { f: "Xromosomalar soni", b: "46 (23 juft)", g: [9, 11] }
+        { f: "Xromosomalar", b: "46 (23 juft)", g: [9, 11] }
     ],
     tarix: [
         { f: "Mustaqillik kuni", b: "1991-yil 1-sentabr", g: [5, 11] },
-        { f: "Piramidalar", b: "Qadimgi Misrda qurilgan", g: [5, 11] },
-        { f: "Amir Temur", b: "1336–1405, Keshda tug'ilgan", g: [7, 11] },
+        { f: "Piramidalar", b: "Qadimgi Misr", g: [5, 11] },
+        { f: "Amir Temur", b: "1336–1405", g: [7, 11] },
         { f: "Temuriylar poytaxti", b: "Samarqand", g: [7, 11] },
         { f: "1-jahon urushi", b: "1914–1918", g: [9, 11] },
         { f: "2-jahon urushi", b: "1939–1945", g: [9, 11] }
     ]
 };
 
-/* ============ AI BILIM BAZASI (offline zaxira) ============ */
+/* ============ AI BILIM BAZASI (offline) ============ */
 const AI_KB = [
-    { k: ["salom", "assalom", "hello", "hi "], a: "Salom! 👋 Men AI Study yordamchingizman. Fanlar bo'yicha savollaringizni bemalol bering." },
-    { k: ["rahmat", "tashakkur", "thanks"], a: "Arzimaydi! 😊 Yana savollaringiz bo'lsa, bemalol so'rang!" },
-    { k: ["pifagor", "gipotenuz"], g: [8, 11], a: "<b>Pifagor teoremasi</b>: to'g'ri burchakli uchburchakda gipotenuza kvadrati katetlar kvadratlari yig'indisiga teng — <b>a² + b² = c²</b>." },
-    { k: ["kvadrat yuz", "kvadratning yuz"], g: [3, 11], a: "<b>Kvadrat yuzasi</b>: S = a² (tomon kvadrati). To'g'ri to'rtburchak yuzasi: S = a × b." },
-    { k: ["foiz", "protsent"], g: [5, 11], a: "<b>Foiz</b>: a% ning b foizi = (a × b) / 100. Masalan, 200 ning 15% i = 200 × 0,15 = 30." },
-    { k: ["doira", "radius", "diametr"], g: [7, 11], a: "<b>Doira</b>: uzunligi C = 2πr, yuzasi S = πr². Diametr d = 2r bo'lsa, C = πd." },
-    { k: ["past simple", "o'tgan zamon"], g: [7, 11], a: "<b>Past Simple</b> — o'tgan zamon. To'g'ri fe'llarga <b>-ed</b> qo'shiladi (work → worked), noto'g'ri fe'llar o'z shaklini oladi (go → went)." },
-    { k: ["since", " for "], g: [9, 11], a: "<b>since va for</b>: since — aniq vaqt nuqtasi bilan (since 2010), for — davr bilan (for 5 years)." },
-    { k: ["nyuton", "inertsi"], g: [9, 11], a: "<b>Nyuton qonunlari</b>:<br>1. Inertsiya — jism holatini o'zi o'zgartirmaydi.<br>2. F = m × a<br>3. Har bir ta'sirga teng va qarama-qarshi ta'sir bor." },
-    { k: ["tezlik"], g: [7, 11], a: "<b>Tezlik</b>: v = s / t. O'lchov birligi — m/s." },
-    { k: ["suv", "h2o", "h₂o"], g: [8, 11], a: "<b>Suv (H₂O)</b> — 2 vodorod + 1 kislorod. Qaynash 100°C, muzlash 0°C." },
-    { k: ["fotosintez"], g: [7, 11], a: "<b>Fotosintez</b>: <b>6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</b>. Xloroplastda, xlorofill yordamida kechadi." },
-    { k: ["hujayra", "cell"], g: [5, 11], a: "<b>Hujayra</b> — hayotning asosiy birligi. Qismlari: yadro, membrana, sitoplazma, mitoxondriya, ribosoma." },
-    { k: ["mustaqil", "1991"], a: "<b>O'zbekiston mustaqilligi</b> — 1991-yil 31-avgust, bayram 1-sentabr." },
-    { k: ["temur", "amir "], g: [7, 11], a: "<b>Amir Temur</b> (1336–1405) — Kesh (Shahrisabz) yaqinida tug'ilgan, poytaxti — Samarqand." }
+    { k: ["salom", "assalom", "hello", "hi "], a: "Salom! 👋 Men IlmAI yordamchingizman. Fanlar bo'yicha savollaringizni bemalol bering." },
+    { k: ["rahmat", "tashakkur", "thanks"], a: "Arzimaydi! 😊 Yana so'rang!" },
+    { k: ["pifagor", "gipotenuz"], g: [8, 11], a: "<b>Pifagor teoremasi</b>: <b>a² + b² = c²</b>. Masalan, katetlar 6 va 8 → c = 10." },
+    { k: ["kvadrat yuz", "kvadratning yuz"], g: [3, 11], a: "<b>Kvadrat yuzasi</b>: S = a²." },
+    { k: ["foiz", "protsent"], g: [5, 11], a: "<b>Foiz</b>: a% ning b foizi = (a × b) / 100." },
+    { k: ["doira", "radius", "diametr"], g: [7, 11], a: "<b>Doira</b>: C = 2πr, S = πr²." },
+    { k: ["past simple", "o'tgan zamon"], g: [7, 11], a: "<b>Past Simple</b>: to'g'ri fe'llarga -ed, noto'g'ri: go → went." },
+    { k: ["since", " for "], g: [9, 11], a: "<b>since</b> — aniq vaqt (since 2010), <b>for</b> — davr (for 5 years)." },
+    { k: ["nyuton", "inertsi"], g: [9, 11], a: "<b>Nyuton qonunlari</b>: 1. Inertsiya. 2. F = m × a. 3. Ta'sir-ta'sir." },
+    { k: ["tezlik"], g: [7, 11], a: "<b>Tezlik</b>: v = s / t. Birligi — m/s." },
+    { k: ["suv", "h2o", "h₂o"], g: [8, 11], a: "<b>Suv (H₂O)</b> — 2 vodorod + 1 kislorod." },
+    { k: ["fotosintez"], g: [7, 11], a: "<b>Fotosintez</b>: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂." },
+    { k: ["hujayra", "cell"], g: [5, 11], a: "<b>Hujayra</b> — hayotning asosiy birligi." },
+    { k: ["mustaqil", "1991"], a: "<b>Mustaqillik</b> — 1991-yil 31-avgust." },
+    { k: ["temur", "amir "], g: [7, 11], a: "<b>Amir Temur</b> (1336–1405), poytaxti — Samarqand." }
 ];
 
 /* ============ NAMUNA REYTING ============ */
@@ -243,18 +243,19 @@ const BADGES = [
     { icon: "⚡", label: "7 kunlik seriya", cond: s => s.streak >= 7 },
     { icon: "📚", label: "5 ta test", cond: s => s.totalTests >= 5 },
     { icon: "🎯", label: "20 to'g'ri javob", cond: s => s.totalCorrect >= 20 },
+    { icon: "💎", label: "500 gemma", cond: s => s.gems >= 500 },
     { icon: "🧠", label: "100% aniqlik", cond: s => s.totalQuestions >= 10 && s.totalCorrect === s.totalQuestions }
 ];
 
 const QUOTES = [
-    "Bilim — eng katta boylik. Uni hech kim olib qo'yolmaydi.",
-    "Har kuni 1% yaxshilaning — yiliga 37 baravar o'sasiz.",
-    "Muvaffaqiyat — bu kichik qadamlar yig'indisi.",
-    "Savol berish — o'ranishning birinchi qadami.",
+    "Bilim — eng katta boylik.",
+    "Har kuni 1% yaxshilaning.",
+    "Muvaffaqiyat — kichik qadamlar yig'indisi.",
+    "Savol berish — o'rganishning birinchi qadami.",
     "Bugun o'rganing — ertaga foydalanasiz.",
     "Zo'r natija — muntazam mashq natijasidir.",
-    "Xato qilishdan qo'rqmang — o'sish shundan boshlanadi.",
-    "O'qish qiyin, ammo jaholat undan ham qiyin."
+    "Xato qilishdan qo'rqmang.",
+    "O'qish qiyin, jaholat undan ham qiyin."
 ];
 
 const NAV = [
@@ -270,14 +271,13 @@ const NAV = [
     { id: "sozlamalar", label: "Sozlamalar", icon: "settings" }
 ];
 
-/* ============ AI MODELLARI ============ */
 const AI_MODELS = {
-  gemini: [
-    ["gemini-3.8-flash", "Gemini 3.8 Flash (yangi, tavsiya)"],
-    ["gemini-3.5-flash-lite", "Gemini 3.5 Flash Lite (tez)"],
-    ["gemini-flash-latest", "Gemini Flash — eng so'nggi"],
-    ["gemini-2.5-flash", "Gemini 2.5 Flash"]
-  ],
+    gemini: [
+        ["gemini-3.8-flash", "Gemini 3.8 Flash (yangi, tavsiya)"],
+        ["gemini-3.5-flash-lite", "Gemini 3.5 Flash Lite (tez)"],
+        ["gemini-flash-latest", "Gemini Flash — eng so'nggi"],
+        ["gemini-2.5-flash", "Gemini 2.5 Flash"]
+    ],
     openai: [
         ["gpt-4o-mini", "GPT-4o mini (arzon)"],
         ["gpt-4o", "GPT-4o (kuchli)"],
@@ -290,6 +290,7 @@ const DEFAULTS = {
     name: "", grade: 0, points: 0, weeklyPoints: 0, weekId: "", streak: 0, lastActive: "",
     totalTests: 0, totalCorrect: 0, totalQuestions: 0,
     history: [], notes: [], dailyPoints: {}, subjectStats: {},
+    energy: 25, gems: 0, energyAt: 0, freeze: false, super: false, superUntil: 0,
     theme: "light", sound: true, apiKey: "", apiModel: "gemini-3.8-flash", apiProvider: "gemini"
 };
 let saved = {};
@@ -297,16 +298,17 @@ try { saved = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) { }
 let state = Object.assign({}, DEFAULTS, saved);
 
 function save() {
-  localStorage.setItem(STORE_KEY, JSON.stringify(state));
-  if (typeof currentUser !== "undefined" && currentUser) saveCurrentUserState();
+    localStorage.setItem(STORE_KEY, JSON.stringify(state));
+    if (typeof currentUser !== "undefined" && currentUser) saveCurrentUserState();
 }
-let setup = { subject: null, diff: 0 };
+
+let setup = { subject: null, diff: 0, aiMode: 0 };
 let current = [], idx = 0, answers = [], timeLeft = 0, tm = null;
 let lbTab = "all";
 let fc = { subject: "matematika", i: 0 };
 let chatHistory = [];
 
-/* ============ SINFGA BOG'LIQ FILTRLAR ============ */
+/* ============ SINFGA FILTRLAR ============ */
 const inGrade = it => !state.grade || (it.g[0] <= state.grade && state.grade <= it.g[1]);
 const subjectOpen = s => !state.grade || state.grade >= s.gr[0];
 const gradeQs = id => TESTS[id].filter(inGrade);
@@ -321,9 +323,19 @@ function touchActivity() {
     const today = todayKey();
     if (state.lastActive === today) return;
     const yKey = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
-    state.streak = (state.lastActive === yKey) ? state.streak + 1 : 1;
+    if (state.lastActive === yKey) {
+        state.streak = state.streak + 1;
+    } else if (state.freeze) {
+        state.freeze = false;
+        toast("🧊 Muzlatgich seriyani saqladi!");
+    } else {
+        state.streak = 1;
+    }
     state.lastActive = today;
+    state.gems += 5;
     save();
+    updateEnergyUI();
+    toast("🎁 Kunlik bonus: +5 💎");
 }
 function addPoints(n) {
     state.points += n;
@@ -393,7 +405,7 @@ function setGrade(v) {
     state.grade = +v;
     save();
     refreshAll();
-    if (state.grade) toast(`${state.grade}-sinf tanlandi — savollar moslashtirildi 🎯`);
+    if (state.grade) toast(`${state.grade}-sinf tanlandi 🎯`);
     else toast("Sinf tanlanmadi — barcha fanlar ochiq");
 }
 function refreshAll() {
@@ -448,12 +460,24 @@ function initials(n) {
     const p = (n || "").trim().split(/\s+/);
     return (((p[0] || "S")[0] || "S") + ((p[1] || "")[0] || "")).toUpperCase();
 }
+/* SUPER logo — favicon 4 rang gradient */
+const FAV_SUPER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2358CC02'/%3E%3Cstop offset='0.35' stop-color='%237C3AED'/%3E%3Cstop offset='0.7' stop-color='%231D4ED8'/%3E%3Cstop offset='1' stop-color='%2306B6D4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='5' fill='url(%23g)'/%3E%3Cg stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cpath d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3C/g%3E%3C/svg%3E";
+let FAV_NORMAL = "";
+
+function applySuperTheme() {
+    document.body.classList.toggle("super", !!state.super);
+    const link = document.querySelector('link[rel="icon"]');
+    if (!link) return;
+    if (!FAV_NORMAL) FAV_NORMAL = link.href;
+    link.href = state.super ? FAV_SUPER : FAV_NORMAL;
+}
 function updateChrome() {
     const name = state.name || "O'quvchi";
     const lv = getLevel(state.points);
-    const sub = (state.grade ? state.grade + "-sinf · " : "") + lv.name;
+    const sub = (state.super ? "👑 SUPER · " : "") + (state.grade ? state.grade + "-sinf · " : "") + lv.name;
     $("userMini").innerHTML = `<span class="um-av">${initials(name)}</span><span><span class="um-name">${escapeHtml(name)}</span><br><span class="um-lvl">${sub}</span></span>`;
-    $("topStats").innerHTML = `<span class="tag">${icon("zap")} ${state.points}</span><span class="tag tag-plain">${icon("flame")} ${state.streak}</span>`;
+     applySuperTheme();
+    updateEnergyUI();
 }
 
 /* ============ ASOSIY PANEL ============ */
@@ -490,7 +514,7 @@ function renderDashboard() {
     if (lv.next) {
         const pct = Math.min(100, Math.round(state.points / lv.next * 100));
         lh += `<p class="lvl-sub">Keyingi darajaga <b>${lv.next - state.points}</b> ball qoldi</p><div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>`;
-    } else lh += `<p class="lvl-sub">Eng yuqori darajaga yetdingiz!</p>`;
+    } else lh += `<p class="lvl-sub">Eng yuqori daraja!</p>`;
     $("levelCard").innerHTML = lh;
 
     $("dashSubjects").innerHTML = SUBJECTS.filter(subjectOpen).map(s => {
@@ -544,7 +568,7 @@ function renderTestGrid() {
     const mix = Object.values(TESTS).flat().filter(inGrade).length;
     html += `<div class="card mode-card" onclick="openSetup('aralash')">
     <div class="mode-top"><span class="mode-ic" style="background:var(--accent-soft)">${icon("shuffle")}</span>
-    <div><h3>Aralash test</h3><p>Sinfingizga mos barcha fanlardan savollar</p></div></div>
+    <div><h3>Aralash test</h3><p>Sinfingizga mos barcha fanlardan</p></div></div>
     <div class="mode-meta"><span>${mix} savol</span><span>Tasodifiy</span></div></div>`;
     $("testGrid").innerHTML = html;
 }
@@ -568,6 +592,12 @@ function setDiff(btn) {
     btn.classList.add("active");
     updateSetupMeta();
 }
+function setAI(btn) {
+    setup.aiMode = +btn.dataset.ai;
+    btn.parentElement.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+    btn.classList.add("active");
+    if (setup.aiMode) toast("🤖 AI har safar YANGI savollar yaratadi!");
+}
 function pool() {
     let qs = setup.subject === "aralash"
         ? Object.values(TESTS).flat()
@@ -581,11 +611,23 @@ function updateSetupMeta() {
     $("setupMeta").textContent = n ? n + " ta savol mavjud" : "Bu darajada savol yo'q";
 }
 
-function startTest() {
+async function startTest() {
+    checkEnergyReset();
+    if (setup.aiMode) { startAITest(); return; }
+    if (!state.super && state.energy <= 0) { showNoEnergy(); return; }
     const p = shuffle(pool().slice());
     if (!p.length) { toast("Bu murakkablikda savol topilmadi", "error"); return; }
-    const n = Math.min(+$("countSel").value, p.length);
-    current = p.slice(0, n);
+    let n = Math.min(+$("countSel").value, p.length);
+    if (!state.super) {
+        if (n > state.energy) { n = state.energy; toast("⚡ Energiya yetarli emas — " + n + " ta savol"); }
+        state.energy -= n;
+        save();
+        updateEnergyUI();
+    }
+    current = p.slice(0, n).map(q => {
+        const idxs = shuffle(q.o.map((_, i) => i));
+        return { q: q.q, o: idxs.map(i => q.o[i]), a: idxs.indexOf(q.a), l: q.l, g: q.g, e: q.e };
+    });
     answers = Array(n).fill(null);
     idx = 0;
     timeLeft = n * 60;
@@ -617,9 +659,9 @@ function renderQ() {
 }
 function pick(i) { answers[idx] = i; renderQ(); }
 function prevQ() { if (idx > 0) { idx--; renderQ(); } }
-function nextQ() { if (idx < current.length - 1) { idx++; renderQ(); } else finishTest(); }
+function nextQ() { if (!current.length) return; if (idx < current.length - 1) { idx++; renderQ(); } else finishTest(); }
 function abortTest() {
-    if (!confirm("Testni tashlab yuborishni xohlaysizmi? Natija saqlanmaydi.")) return;
+    if (!confirm("Testni tashlab yuborishni xohlaysizmi? Energiya qaytmaydi!")) return;
     clearInterval(tm);
     backToSetup();
 }
@@ -643,13 +685,20 @@ function finishTest() {
     state.totalTests++;
     state.totalCorrect += correct;
     state.totalQuestions += total;
-    if (setup.subject !== "aralash") {
+    if (setup.subject !== "aralash" && !setup.aiMode) {
         const s = state.subjectStats[setup.subject] || (state.subjectStats[setup.subject] = { done: 0, correct: 0 });
         s.done += total; s.correct += correct;
     }
     addPoints(pts);
+    let gemEarn = 0;
+    for (let i = 0; i < correct; i++) {
+        gemEarn += 3 + Math.floor(Math.random() * 23);
+    }
+    state.gems += gemEarn;
+    save();
+    updateEnergyUI();
     state.history.unshift({
-        subject: (setup.subject === "aralash" ? "Aralash" : subjName(setup.subject)) + (state.grade ? " (" + state.grade + "-sinf)" : ""),
+        subject: (setup.subject === "aralash" ? "Aralash" : subjName(setup.subject)) + (setup.aiMode ? " 🤖AI" : "") + (state.grade ? " (" + state.grade + "-sinf)" : ""),
         score: correct, total, pts, percent, date: todayKey()
     });
     save(); updateChrome();
@@ -666,7 +715,7 @@ function finishTest() {
     $("resultHero").innerHTML = `
     <div class="res-circle ${ring}">${percent}%</div>
     <h2>${gradeTxt}</h2>
-    <p class="res-sub">${correct} / ${total} to'g'ri javob · <b>+${pts} ball</b> qo'shildi</p>
+    <p class="res-sub">${correct} / ${total} to'g'ri · <b>+${pts} ball</b> · 💎 <b>+${gemEarn}</b> gemma</p>
     ${unanswered ? `<p class="res-warn">Eslatma: ${unanswered} ta savol javobsiz qoldi</p>` : ""}`;
 
     $("reviewBox").innerHTML = current.map((q, i) => {
@@ -678,7 +727,7 @@ function finishTest() {
     }).join("");
 }
 
-/* Klaviatura: 1-4 tugmalari */
+/* Klaviatura: 1-4 */
 document.addEventListener("keydown", e => {
     const tag = (document.activeElement || {}).tagName;
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
@@ -751,7 +800,7 @@ async function sendMessage() {
             if (m.includes("location") || m.includes("region") || m.includes("billing")) {
                 help = "<br><br>📍 <b>Ma'nosi:</b> Gemini bu mintaqada cheklangan — menga yozing, Groq (boshqa bepul AI) ulab beraman.";
             } else if (m.includes("api key") || m.includes("not valid") || m.includes("invalid") || m.includes("permission") || m.includes("401") || m.includes("403")) {
-                help = "<br><br>🔑 <b>Ma'nosi:</b> Kalit noto'g'ri — yangi kalit oling yoki qayta kiriting.";
+                help = "<br><br>🔑 <b>Ma'nosi:</b> Kalit noto'g'ri — yangi kalit oling.";
             } else if (m.includes("quota") || m.includes("429") || m.includes("rate limit") || m.includes("resource")) {
                 help = "<br><br>⏳ <b>Ma'nosi:</b> Limit tugadi — 1-2 daqiqa kutib turing.";
             } else if (m.includes("internet")) {
@@ -805,7 +854,7 @@ function onProviderChange() {
         ? "Google AI Studio kaliti (AIza... yoki AQ... bilan boshlanadi)"
         : "OpenAI API kaliti (sk- bilan boshlanadi)";
     if (hint) hint.innerHTML = p === "gemini"
-        ? `Kalit olish: <b>aistudio.google.com/apikey</b> → "Create API key". Bepul — karta kerak emas!`
+        ? `Kalit olish: <b>aistudio.google.com/apikey</b> → "Create API key". Bepul!`
         : `Kalit olish: <b>platform.openai.com</b> → API keys. Pullik.`;
 }
 
@@ -814,20 +863,18 @@ async function askCloud(question) {
     return askGemini(question);
 }
 
-/* ===== GOOGLE GEMINI — BEPUL (modelni o'zi tanlaydi) ===== */
+/* ===== GEMINI (modelni o'zi tanlaydi) ===== */
 const GEMINI_TRY = ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-flash-latest", "gemini-2.5-flash"];
 
 async function askGemini(question) {
     chatHistory.push({ role: "user", content: question });
 
     const sys =
-        "Sen 'AI Study' o'quv platformasining yordamchi ustozisan. " +
+        "Sen 'IlmAI' o'quv platformasining yordamchi ustozisan. " +
         (state.name ? "O'quvchining ismi " + state.name + ". " : "") +
-        (state.grade
-            ? "O'quvchi " + state.grade + "-sinfda o'qiydi — javoblarni aynan shu sinf darajasiga moslab ber: sodda tilda, misollar bilan tushuntir. "
-            : "") +
-        "Har doim o'zbek tilida javob ber. Javob qisqa, aniq va foydali bo'lsin (taxminan 150 so'zgacha). " +
-        "Formulalarni oddiy belgilar bilan yoz (masalan: a^2 + b^2 = c^2).";
+        (state.grade ? "O'quvchi " + state.grade + "-sinfda o'qiydi — javoblarni shu sinf darajasiga moslab ber. " : "") +
+        "Har doim o'zbek tilida javob ber. Javob qisqa va aniq bo'lsin (~150 so'z). " +
+        "Formulalarni oddiy belgilar bilan yoz (a^2 + b^2 = c^2).";
 
     const contents = chatHistory.slice(-10).map(m => ({
         role: m.role === "assistant" ? "model" : "user",
@@ -840,7 +887,7 @@ async function askGemini(question) {
         generationConfig: { maxOutputTokens: 600, temperature: 0.7 }
     });
 
-     const first = (state.apiModel && GEMINI_TRY.includes(state.apiModel)) ? state.apiModel : "gemini-3.8-flash";
+    const first = (state.apiModel && GEMINI_TRY.includes(state.apiModel)) ? state.apiModel : "gemini-3.8-flash";
     const tryList = [first, ...GEMINI_TRY.filter(m => m !== first)];
     const errors = [];
 
@@ -870,7 +917,7 @@ async function askGemini(question) {
         const answer = (cand && cand.content && cand.content.parts)
             ? cand.content.parts.map(p => p.text).join("")
             : "";
-        if (!answer) { errors.push(model + ": javob bo'sh qaytdi"); continue; }
+        if (!answer) { errors.push(model + ": javob bo'sh"); continue; }
 
         state.apiModel = model; save();
         chatHistory.push({ role: "assistant", content: answer });
@@ -880,33 +927,24 @@ async function askGemini(question) {
     throw new Error("Barcha modellar xato berdi → " + errors.join(" | "));
 }
 
-/* ===== OPENAI CHATGPT — pullik ===== */
+/* ===== OPENAI (pullik) ===== */
 async function askOpenAI(question) {
     chatHistory.push({ role: "user", content: question });
-
-    const sys =
-        "Sen 'AI Study' o'quv platformasining yordamchi ustozisan. " +
-        (state.name ? "O'quvchining ismi " + state.name + ". " : "") +
-        (state.grade ? "O'quvchi " + state.grade + "-sinfda o'qiydi — javoblarni shu sinf darajasiga moslab ber. " : "") +
-        "Har doim o'zbek tilida, qisqa va aniq javob ber.";
-
+    const sys = "Sen 'IlmAI' o'quv platformasining yordamchi ustozisan. O'zbek tilida, qisqa javob ber.";
     const res = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": "Bearer " + state.apiKey },
         body: JSON.stringify({
             model: state.apiModel || "gpt-4o-mini",
             messages: [{ role: "system", content: sys }, ...chatHistory.slice(-10)],
-            max_tokens: 600,
-            temperature: 0.7
+            max_tokens: 600, temperature: 0.7
         })
     });
-
     if (!res.ok) {
         let msg = "API xatosi (" + res.status + ")";
         try { const e = await res.json(); if (e.error && e.error.message) msg = e.error.message; } catch (e2) { }
         throw new Error(msg);
     }
-
     const data = await res.json();
     const answer = (data.choices && data.choices[0] && data.choices[0].message.content) || "Javob olinmadi.";
     chatHistory.push({ role: "assistant", content: answer });
@@ -914,7 +952,7 @@ async function askOpenAI(question) {
     return answer;
 }
 
-/* AI javobini chiroyli formatlash */
+/* AI javob formatlash */
 function formatAI(text) {
     let t = escapeHtml(text);
     t = t.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
@@ -924,7 +962,7 @@ function formatAI(text) {
     return t;
 }
 
-/* Kalitni saqlash / uzish */
+/* Kalit saqlash/uzish */
 function saveApiKey() {
     const key = $("apiKeyInput").value.trim();
     if (!key) { toast("Kalit kiritilmadi", "error"); return; }
@@ -937,7 +975,7 @@ function saveApiKey() {
     save();
     chatHistory = [];
     updateAIStatus();
-    addMsg((p === "gemini" ? "Gemini" : "ChatGPT") + " ulandi ✅ Endi <b>har qanday savolingizga</b> javob bera olaman!", "bot");
+    addMsg("Gemini ulandi ✅ Endi <b>har qanday savolingizga</b> javob bera olaman!", "bot");
     toast("AI muvaffaqiyatli ulandi!");
 }
 function clearApiKey() {
@@ -960,11 +998,354 @@ function updateAIStatus() {
     }
 }
 
+/* ============ AI TEST GENERATORI ============ */
+async function askGeminiRaw(prompt, maxTokens) {
+    const res = await fetch(
+        "https://generativelanguage.googleapis.com/v1beta/models/" + (state.apiModel || "gemini-3.8-flash") + ":generateContent",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "x-goog-api-key": state.apiKey },
+            body: JSON.stringify({
+                systemInstruction: { parts: [{ text: "Sen test savollari generatorisan. Javoblarni FAQAT so'ralgan formatda qaytar." }] },
+                contents: [{ role: "user", parts: [{ text: prompt }] }],
+                generationConfig: { maxOutputTokens: maxTokens, temperature: 0.9 }
+            })
+        }
+    );
+    if (!res.ok) {
+        let msg = "API xatosi (" + res.status + ")";
+        try { const e = await res.json(); if (e.error && e.error.message) msg = e.error.message; } catch (e2) { }
+        throw new Error(msg);
+    }
+    const data = await res.json();
+    const cand = data.candidates && data.candidates[0];
+    const answer = (cand && cand.content && cand.content.parts) ? cand.content.parts.map(p => p.text).join("") : "";
+    if (!answer) throw new Error("Javob bo'sh qaytdi");
+    return answer;
+}
+
+async function generateAITest(subjectId, count) {
+    const subject = subjectId === "aralash"
+        ? "aralash fanlar (matematika, ingliz tili, biologiya, tarix, fizika, kimyo)"
+        : subjName(subjectId);
+    const diffName = ["turli darajada", "oson", "o'rta", "qiyin"][setup.diff];
+    const gradeTxt = state.grade ? state.grade + "-sinf" : "o'rta maktab";
+
+    const prompt = gradeTxt + ' uchun "' + subject + '" fanidan ' + diffName + ' darajada ' + count + ' ta YANGI test savoli yarat. ' +
+        "Har savolda 4 javob varianti (bittasi to'g'ri) va qisqa tushuntirish. " +
+        "Javobni FAQAT JSON: " +
+        '[{"q":"savol","o":["v1","v2","v3","v4"],"a":0,"e":"tushuntirish"}] ' +
+        "— \"a\" to'g'ri javob raqami (0-3). Savollar qiziqarli va takrorlanmasin.";
+
+    const raw = await askGeminiRaw(prompt, 2048);
+    let jsonStr = raw;
+    const s = raw.indexOf("[");
+    const e = raw.lastIndexOf("]");
+    if (s !== -1 && e !== -1) jsonStr = raw.slice(s, e + 1);
+
+    let qs;
+    try { qs = JSON.parse(jsonStr); }
+    catch (err) { throw new Error("AI javobi tushunarsiz"); }
+    if (!Array.isArray(qs) || !qs.length) throw new Error("Savollar bo'sh");
+
+    const clean = [];
+    qs.forEach(q => {
+        if (!q || !q.q || !Array.isArray(q.o) || q.o.length < 2) return;
+        let a = Number(q.a);
+        if (isNaN(a) || a < 0 || a >= q.o.length) a = 0;
+        clean.push({ q: String(q.q), o: q.o.map(String), a: a, l: setup.diff || 2, g: [1, 11], e: String(q.e || "") });
+    });
+    if (!clean.length) throw new Error("Format noto'g'ri");
+    return clean;
+}
+
+async function startAITest() {
+    if (!state.apiKey) {
+        toast("🤖 AI test uchun Gemini kalit kerak — Sozlamalardan ulang", "error");
+        return;
+    }
+    if (!state.super && state.energy <= 0) { showNoEnergy(); return; }
+
+    $("testSetup").classList.add("hidden");
+    $("testResult").classList.add("hidden");
+    $("testActive").classList.remove("hidden");
+    $("tSubject").textContent = (setup.subject === "aralash" ? "Aralash" : subjName(setup.subject)) + " · 🤖 AI";
+    $("tDiff").textContent = "AI";
+    $("tCounter").textContent = "…";
+    $("timer").textContent = "--:--";
+    $("tProgress").style.width = "0%";
+    $("qText").innerHTML = "🤖 <b>AI yangi savollar yaratmoqda...</b><br><span style='font-size:13px;color:var(--muted)'>5-15 soniya kuting</span>";
+    $("optBox").innerHTML = "<div class='typing' style='justify-content:center;padding:25px'><i></i><i></i><i></i></div>";
+    $("prevBtn").style.visibility = "hidden";
+    $("nextBtn").textContent = "Kuting...";
+
+    if (!state.super) {
+        if (n > state.energy) { n = state.energy; }
+        state.energy -= n;
+        save();
+        updateEnergyUI();
+    }
+
+    try {
+        const qs = await generateAITest(setup.subject, n);
+        current = qs;
+        answers = Array(qs.length).fill(null);
+        idx = 0;
+        timeLeft = qs.length * 60;
+        clearInterval(tm); tm = setInterval(tick, 1000);
+        $("timer").textContent = fmtTime(timeLeft);
+        $("nextBtn").textContent = "Keyingi";
+        touchActivity();
+        renderQ();
+        toast("✅ " + qs.length + " ta YANGI savol tayyor!");
+    } catch (err) {
+        toast("AI xato — bankdan savollar berildi: " + err.message, "error");
+        const p = shuffle(pool().slice());
+        if (!p.length) { backToSetup(); return; }
+        const m = Math.min(n, p.length);
+        current = p.slice(0, m).map(q => {
+            const idxs = shuffle(q.o.map((_, i) => i));
+            return { q: q.q, o: idxs.map(i => q.o[i]), a: idxs.indexOf(q.a), l: q.l, g: q.g, e: q.e };
+        });
+        answers = Array(m).fill(null);
+        idx = 0;
+        timeLeft = m * 60;
+        clearInterval(tm); tm = setInterval(tick, 1000);
+        $("timer").textContent = fmtTime(timeLeft);
+        $("nextBtn").textContent = "Keyingi";
+        touchActivity();
+        renderQ();
+    }
+}
+
+/* ============ ENERGIYA / GEMMALAR ============ */
+const ENERGY_MAX = 25;
+const ENERGY_RESET_MS = 24 * 60 * 60 * 1000;
+
+function checkEnergyReset() {
+    if (!state.energyAt) { state.energyAt = Date.now(); save(); return; }
+    if (Date.now() - state.energyAt >= ENERGY_RESET_MS) {
+        state.energy = ENERGY_MAX;
+        state.energyAt = Date.now();
+        save();
+        updateEnergyUI();
+        toast("⚡ Energiya to'lidi — 25/25!");
+    }
+}
+
+function fmtEnergyTimer() {
+    const ms = Math.max(0, ENERGY_RESET_MS - (Date.now() - (state.energyAt || Date.now())));
+    const h = Math.floor(ms / 3600000);
+    const m = Math.floor((ms % 3600000) / 60000);
+    const s = Math.floor((ms % 60000) / 1000);
+    return h + ":" + String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+}
+
+function updateEnergyUI() {
+    const en = $("energyPill"), gm = $("gemsPill");
+    if (en) en.innerHTML = state.super ? "⚡ ∞" : "⚡ " + state.energy + "/" + ENERGY_MAX;
+    if (gm) gm.innerHTML = "💎 " + state.gems;
+    const sb = $("shopBtnGems");
+    if (sb) sb.textContent = "💎 " + state.gems;
+    const sg = $("shopGems");
+    if (sg) sg.textContent = "💎 " + state.gems;
+    const et = $("energyTimer");
+    if (et) et.textContent = "To'lishiga: " + fmtEnergyTimer();
+    const se = $("shopEnergy");
+    if (se) se.textContent = state.super ? "∞" : state.energy + "/25";
+    const st = $("shopEnergyTimer");
+    if (st) st.textContent = state.super ? "👑 SUPER rejim faol — cheksiz energiya!" : "⚡ " + state.energy + "/25 · To'lishiga: " + fmtEnergyTimer();
+}
+
+/* Do'kon */
+function openShop() { checkSuper(); closeNoEnergy(); $("shopModal").classList.remove("hidden"); updateEnergyUI(); updateSuperBtn(); }
+function closeShop() { $("shopModal").classList.add("hidden"); }
+
+function buyEnergy() {
+    if (state.super) { toast("SUPER rejimda energiya cheksiz! 👑", "error"); return; }
+    if (state.energy >= ENERGY_MAX) { toast("Energiya allaqachon to'liq! ⚡", "error"); return; }
+    state.gems -= 350;
+    state.energy = ENERGY_MAX;
+    state.energyAt = Date.now();
+    save(); updateEnergyUI();
+    closeShop(); confetti();
+    toast("⚡ Energiya to'ldirildi — 25/25!");
+}
+
+function buyFreeze() {
+    if (state.freeze) { toast("Muzlatgich allaqachon faol! 🧊", "error"); return; }
+    if (state.gems < 100) { toast("Gemma yetarli emas! 💎", "error"); return; }
+    state.gems -= 100;
+    state.freeze = true;
+    save(); updateEnergyUI();
+    closeShop();
+    toast("🧊 Streak muzlatildi!");
+}
+/* Gemma paketlari (demo to'lov) */
+function buyGems(amount, price) {
+    if (!confirm("💎 " + amount + " gemma — $" + price + "\n\nBu DEMO to'lov — haqiqiy pul yechilmaydi!\nSotib olasizmi?")) return;
+    state.gems += amount;
+    save(); updateEnergyUI();
+    closeShop(); confetti();
+    toast("💎 +" + amount + " gemma qo'shildi!");
+}
+
+/* SUPER IlmAI */
+function checkSuper() {
+    if (state.super && state.superUntil && Date.now() > state.superUntil) {
+        state.super = false;
+        save();
+        updateChrome();
+        toast("SUPER IlmAI muddati tugadi ⏳");
+    }
+}
+function buySuper() {
+    if (state.super) { toast("Siz allaqachon SUPER! 👑"); return; }
+    if (!confirm("👑 SUPER IlmAI — $30/oy\n\n⚡ Cheksiz energiya\n🧊 Har oy bepul muzlatgich\n👑 SUPER belgisi\n\nBu DEMO to'lov. Faollashtirilsinmi?")) return;
+    state.super = true;
+    state.superUntil = Date.now() + 30 * 24 * 60 * 60 * 1000;
+    save();
+    closeShop(); confetti();
+    updateChrome(); updateEnergyUI();
+    toast("👑 SUPER IlmAI faol! ⚡∞ energiya!");
+}
+function updateSuperBtn() {
+    const b = $("superBtn");
+    if (!b) return;
+    if (state.super) {
+        const days = Math.max(0, Math.ceil((state.superUntil - Date.now()) / 86400000));
+        b.textContent = "👑 SUPER FAOL — " + days + " kun qoldi";
+        b.classList.add("inactive");
+    } else {
+        b.textContent = "SUPERGA AYLANISH 👑";
+        b.classList.remove("inactive");
+    }
+}
+/* Energiya tugadi */
+function showNoEnergy() {
+    $("noEnergyModal").classList.remove("hidden");
+    updateEnergyUI();
+}
+function closeNoEnergy() { const m = $("noEnergyModal"); if (m) m.classList.add("hidden"); }
+
+/* ============ LOGIN (LOCAL) ============ */
+const USERS_KEY = "ilmAIUsers";
+const ACTIVE_KEY = "ilmAIActiveUser";
+let currentUser = null;
+
+function getUsers() {
+    try { return JSON.parse(localStorage.getItem(USERS_KEY)) || {}; }
+    catch (e) { return {}; }
+}
+function setUsers(u) { localStorage.setItem(USERS_KEY, JSON.stringify(u)); }
+
+function hashPass(p) {
+    let h = 0;
+    for (let i = 0; i < p.length; i++) h = ((h << 5) - h + p.charCodeAt(i)) | 0;
+    return "h" + Math.abs(h);
+}
+
+function saveCurrentUserState() {
+    if (!currentUser) return;
+    const users = getUsers();
+    if (users[currentUser]) {
+        users[currentUser].state = JSON.parse(JSON.stringify(state));
+        users[currentUser].state.savedAt = Date.now();
+        setUsers(users);
+    }
+}
+
+function initLocalAuth() {
+    const email = localStorage.getItem(ACTIVE_KEY);
+    if (email) {
+        const users = getUsers();
+        if (users[email]) {
+            currentUser = email;
+            state = Object.assign({}, DEFAULTS, users[email].state);
+            localStorage.setItem(STORE_KEY, JSON.stringify(state));
+            chatHistory = [];
+        }
+    }
+    updateAuthUI();
+}
+
+function loginAs(email) {
+    const users = getUsers();
+    localStorage.setItem(ACTIVE_KEY, email);
+    state = Object.assign({}, DEFAULTS, users[email].state);
+    localStorage.setItem(STORE_KEY, JSON.stringify(state));
+    currentUser = email;
+    chatHistory = [];
+    refreshAll();
+    updateAuthUI();
+}
+
+function emailSignUp() {
+    const email = $("emailInput").value.trim().toLowerCase();
+    const pass = $("passInput").value;
+    if (!email || !pass) { toast("Email va parolni kiriting", "error"); return; }
+    if (!email.includes("@") || email.length < 5) { toast("Email noto'g'ri yozilgan", "error"); return; }
+    if (pass.length < 6) { toast("Parol kamida 6 belgidan bo'lsin", "error"); return; }
+    const users = getUsers();
+    if (users[email]) { toast("Bu email band — 'Log in' bosing", "error"); return; }
+    const st = JSON.parse(JSON.stringify(state));
+    if (!st.name) st.name = email.split("@")[0];
+    users[email] = { pass: hashPass(pass), state: st };
+    setUsers(users);
+    loginAs(email);
+    closeLogin();
+    toast("Akkaunt yaratildi ✅ Progressingiz saqlanadi!");
+}
+
+function emailLogin() {
+    const email = $("emailInput").value.trim().toLowerCase();
+    const pass = $("passInput").value;
+    if (!email || !pass) { toast("Email va parolni kiriting", "error"); return; }
+    const users = getUsers();
+    const u = users[email];
+    if (!u) { toast("Bunday akkaunt yo'q — 'Sign up' bosing", "error"); return; }
+    if (u.pass !== hashPass(pass)) { toast("Parol xato!", "error"); return; }
+    loginAs(email);
+    closeLogin();
+}
+
+function localLogout() {
+    saveCurrentUserState();
+    localStorage.removeItem(ACTIVE_KEY);
+    currentUser = null;
+    state = Object.assign({}, DEFAULTS);
+    localStorage.setItem(STORE_KEY, JSON.stringify(state));
+    chatHistory = [];
+    refreshAll();
+    updateAuthUI();
+    toast("Hisobdan chiqdingiz — ma'lumotlar saqlandi ✅");
+}
+
+function toggleAuth() {
+    if (currentUser) localLogout();
+    else showLogin();
+}
+
+function showLogin() { $("loginModal").classList.remove("hidden"); }
+function closeLogin() { $("loginModal").classList.add("hidden"); }
+
+function updateAuthUI() {
+    const btn = $("authBtn");
+    if (!btn) return;
+    if (currentUser) {
+        $("authBtnText").textContent = "Chiqish · " + (state.name || currentUser.split("@")[0]);
+        btn.classList.add("in");
+    } else {
+        $("authBtnText").textContent = "Hisobga kirish";
+        btn.classList.remove("in");
+    }
+}
+
 /* ============ NATIJALAR ============ */
 function renderResults() {
     const box = $("resultsContent");
     if (!state.history.length) {
-        box.innerHTML = `<div class="card empty">Hali test ishlanmagan.<br>Boshlash uchun <a href="#" class="lnk" onclick="showSection('testlar');return false">Testlar</a> bo'limiga o'ting.</div>`;
+        box.innerHTML = `<div class="card empty">Hali test ishlanmagan.<br><a href="#" class="lnk" onclick="showSection('testlar');return false">Testlar</a> bo'limiga o'ting.</div>`;
         return;
     }
     const acc = state.totalQuestions ? Math.round(state.totalCorrect / state.totalQuestions * 100) : 0;
@@ -1046,7 +1427,7 @@ function renderProfile() {
         { num: state.grade ? state.grade + "-sinf" : "—", lbl: "Sinf" },
         { num: lv.name, lbl: "Daraja" },
         { num: state.totalTests, lbl: "Testlar" },
-        { num: state.totalCorrect, lbl: "To'g'ri javoblar" },
+        { num: state.gems, lbl: "Gemmalar 💎" },
         { num: acc + "%", lbl: "Aniqlik" }
     ].map(s => `<div class="stat"><div class="s-num">${s.num}</div><div class="s-lbl">${s.lbl}</div></div>`).join("");
 
@@ -1054,7 +1435,7 @@ function renderProfile() {
     if (lv.next) {
         const pct = Math.min(100, Math.round(state.points / lv.next * 100));
         lh += `<p class="lvl-sub">Keyingi daraja uchun ${lv.next - state.points} ball qoldi</p><div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>`;
-    } else lh += `<p class="lvl-sub">Eng yuqori daraja — tabriklayman!</p>`;
+    } else lh += `<p class="lvl-sub">Eng yuqori daraja!</p>`;
     $("pLevel").innerHTML = lh;
 
     const earned = BADGES.filter(b => b.cond(state)).length;
@@ -1075,135 +1456,18 @@ function exportData() {
     const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "ai-study-malumotlar.json";
+    a.download = "ilm-ai-malumotlar.json";
     a.click();
     URL.revokeObjectURL(a.href);
     toast("Fayl yuklab olindi");
 }
 function resetAll() {
-    if (!confirm("Barcha ma'lumotlar (ball, tarix, yozuvlar) o'chiriladi. Davom etamizmi?")) return;
+    if (!confirm("Barcha ma'lumotlar o'chiriladi. Davom etamizmi?")) return;
     localStorage.removeItem(STORE_KEY);
+    localStorage.removeItem(ACTIVE_KEY);
     location.reload();
 }
-/* ============ KIRISH TIZIMI (LOCAL — Firebase'siz) ============ */
-const USERS_KEY = "ilmAIUsers";
-const ACTIVE_KEY = "ilmAIActiveUser";
 
-let currentUser = null;
-
-function getUsers() {
-  try { return JSON.parse(localStorage.getItem(USERS_KEY)) || {}; }
-  catch (e) { return {}; }
-}
-function setUsers(u) { localStorage.setItem(USERS_KEY, JSON.stringify(u)); }
-
-/* Parolni ochiq saqlamaymiz — oddiy hash */
-function hashPass(p) {
-  let h = 0;
-  for (let i = 0; i < p.length; i++) h = ((h << 5) - h + p.charCodeAt(i)) | 0;
-  return "h" + Math.abs(h);
-}
-
-function saveCurrentUserState() {
-  if (!currentUser) return;
-  const users = getUsers();
-  if (users[currentUser]) {
-    users[currentUser].state = JSON.parse(JSON.stringify(state));
-    users[currentUser].state.savedAt = Date.now();
-    setUsers(users);
-  }
-}
-
-function initLocalAuth() {
-  const email = localStorage.getItem(ACTIVE_KEY);
-  if (email) {
-    const users = getUsers();
-    if (users[email]) {
-      currentUser = email;
-      state = Object.assign({}, DEFAULTS, users[email].state);
-      localStorage.setItem(STORE_KEY, JSON.stringify(state));
-      chatHistory = [];
-    }
-  }
-  updateAuthUI();
-}
-
-function loginAs(email) {
-  const users = getUsers();
-  localStorage.setItem(ACTIVE_KEY, email);
-  state = Object.assign({}, DEFAULTS, users[email].state);
-  localStorage.setItem(STORE_KEY, JSON.stringify(state));
-  currentUser = email;
-  chatHistory = [];
-  refreshAll();
-  updateAuthUI();
-}
-
-/* --- SIGN UP (yangi akkaunt) --- */
-function emailSignUp() {
-  const email = $("emailInput").value.trim().toLowerCase();
-  const pass = $("passInput").value;
-  if (!email || !pass) { toast("Email va parolni kiriting", "error"); return; }
-  if (!email.includes("@") || email.length < 5) { toast("Email noto'g'ri yozilgan", "error"); return; }
-  if (pass.length < 6) { toast("Parol kamida 6 belgidan iborat bo'lsin", "error"); return; }
-  const users = getUsers();
-  if (users[email]) { toast("Bu email band — 'Log in' tugmasini bosing", "error"); return; }
-
-  // Yangi akkaunt — hozirgi progressingiz bilan boshlanadi! 🎁
-  const st = JSON.parse(JSON.stringify(state));
-  if (!st.name) st.name = email.split("@")[0];
-  users[email] = { pass: hashPass(pass), state: st };
-  setUsers(users);
-  loginAs(email);
-  closeLogin();
-  toast("Akkaunt yaratildi ✅ Progressingiz saqlanadi!");
-}
-
-/* --- LOG IN (mavjud akkaunt) --- */
-function emailLogin() {
-  const email = $("emailInput").value.trim().toLowerCase();
-  const pass = $("passInput").value;
-  if (!email || !pass) { toast("Email va parolni kiriting", "error"); return; }
-  const users = getUsers();
-  const u = users[email];
-  if (!u) { toast("Bunday akkaunt yo'q — 'Sign up' bosing", "error"); return; }
-  if (u.pass !== hashPass(pass)) { toast("Parol xato!", "error"); return; }
-  loginAs(email);
-  closeLogin();
-}
-
-/* --- CHIQISH --- */
-function localLogout() {
-  saveCurrentUserState();
-  localStorage.removeItem(ACTIVE_KEY);
-  currentUser = null;
-  state = Object.assign({}, DEFAULTS);
-  localStorage.setItem(STORE_KEY, JSON.stringify(state));
-  chatHistory = [];
-  refreshAll();
-  updateAuthUI();
-  toast("Hisobdan chiqdingiz — ma'lumotlar akkauntda saqlandi ✅");
-}
-
-function toggleAuth() {
-  if (currentUser) localLogout();
-  else showLogin();
-}
-
-function showLogin() { $("loginModal").classList.remove("hidden"); }
-function closeLogin() { $("loginModal").classList.add("hidden"); }
-
-function updateAuthUI() {
-  const btn = $("authBtn");
-  if (!btn) return;
-  if (currentUser) {
-    $("authBtnText").textContent = "Chiqish · " + (state.name || currentUser.split("@")[0]);
-    btn.classList.add("in");
-  } else {
-    $("authBtnText").textContent = "Hisobga kirish";
-    btn.classList.remove("in");
-  }
-}
 /* ============ ISHGA TUSHIRISH ============ */
 document.addEventListener("DOMContentLoaded", () => {
     if (state.weekId !== currentWeek()) { state.weekId = currentWeek(); state.weeklyPoints = 0; save(); }
@@ -1218,23 +1482,33 @@ document.addEventListener("DOMContentLoaded", () => {
     renderFC();
     renderNotes();
     $("soundTgl").checked = state.sound;
-      initLocalAuth();
+
+    initLocalAuth();
 
     const provSel = $("apiProviderSel");
     if (provSel) {
         provSel.value = state.apiProvider || "gemini";
         onProviderChange();
         const mSel = $("apiModelSel");
-        if (mSel) mSel.value = state.apiModel || "gemini-2.5-flash";
+        if (mSel) mSel.value = state.apiModel || "gemini-3.8-flash";
     }
     updateAIStatus();
     applyTheme();
     updateChrome();
     renderDashboard();
-    addMsg(`Salom! Men <b>AI Study</b> yordamchingizman${state.grade ? " — siz " + state.grade + "-sinf o'quvchisisiz" : ""}. Fanlar bo'yicha savol bering — masalan: <i>"Pifagor teoremasi nima?"</i>`, "bot");
+
+    checkEnergyReset();
+    updateEnergyUI();
+    setInterval(() => {
+        checkEnergyReset();
+        updateEnergyUI();
+    }, 5000);
+
+    addMsg(`Salom! Men <b>IlmAI</b> yordamchingizman${state.grade ? " — siz " + state.grade + "-sinf o'quvchisisiz" : ""}. Fanlar bo'yicha savol bering!`, "bot");
+
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./service-worker.js").catch(() => { });
+    }
 });
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./service-worker.js").catch(() => {});
-  }
 
 /* ============ 2-QISM TUGADI ============ */
