@@ -422,7 +422,8 @@ function refreshAll() {
 
 /* ============ NAVIGATSIYA ============ */
 function buildNav() {
-    $("sideNav").innerHTML = NAV.map(n =>
+    const items = isAdmin() ? [...NAV, { id: "admin", label: "Admin panel", icon: "award" }] : NAV;
+    $("sideNav").innerHTML = items.map(n =>
         `<button class="side-link" data-view="${n.id}" onclick="showSection('${n.id}')">${icon(n.icon)}<span>${n.label}</span></button>`
     ).join("");
 }
@@ -433,7 +434,7 @@ function showSection(id) {
     closeSidebar();
     const R = {
         dashboard: renderDashboard, fanlar: renderSubjects, natijalar: renderResults,
-        reyting: renderLeaderboard, profil: renderProfile, yozuvlar: renderNotes
+        reyting: renderLeaderboard, profil: renderProfile, yozuvlar: renderNotes, admin: renderAdmin
     };
     if (R[id]) R[id]();
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -476,7 +477,7 @@ function updateChrome() {
     const lv = getLevel(state.points);
     const sub = (state.super ? "👑 SUPER · " : "") + (state.grade ? state.grade + "-sinf · " : "") + lv.name;
     $("userMini").innerHTML = `<span class="um-av">${initials(name)}</span><span><span class="um-name">${escapeHtml(name)}</span><br><span class="um-lvl">${sub}</span></span>`;
-     applySuperTheme();
+    applySuperTheme();
     updateEnergyUI();
 }
 
@@ -1279,22 +1280,32 @@ function loginAs(email) {
     refreshAll();
     updateAuthUI();
 }
-
 function emailSignUp() {
     const email = $("emailInput").value.trim().toLowerCase();
     const pass = $("passInput").value;
+    const name = ($("nameRegInput") ? $("nameRegInput").value : "").trim();
+    if (!name || name.length < 2) { toast("Ismingizni yozing (kamida 2 harf)!", "error"); return; }
     if (!email || !pass) { toast("Email va parolni kiriting", "error"); return; }
     if (!email.includes("@") || email.length < 5) { toast("Email noto'g'ri yozilgan", "error"); return; }
     if (pass.length < 6) { toast("Parol kamida 6 belgidan bo'lsin", "error"); return; }
     const users = getUsers();
     if (users[email]) { toast("Bu email band — 'Log in' bosing", "error"); return; }
+
+    // 🔒 ISM TAKRORLANMASLIGI — shu yerda tekshiramiz!
+    const nameLower = name.toLowerCase();
+    const nameTaken = Object.values(users).some(u => ((u.state && u.state.name) || "").toLowerCase() === nameLower);
+    if (nameTaken) { toast("Bu ism band — boshqa ism tanlang!", "error"); return; }
+
     const st = JSON.parse(JSON.stringify(state));
-    if (!st.name) st.name = email.split("@")[0];
+    st.name = name;
+    // 👑 Birinchi foydalanuvchi = ADMIN
+    const isFirst = Object.keys(users).length === 0;
     users[email] = { pass: hashPass(pass), state: st };
+    if (isFirst) users[email].admin = true;
     setUsers(users);
     loginAs(email);
     closeLogin();
-    toast("Akkaunt yaratildi ✅ Progressingiz saqlanadi!");
+    toast(isFirst ? "👑 Birinchi foydalanuvchi — SIZ ADMIN bo'ldingiz!" : "Akkaunt yaratildi ✅");
 }
 
 function emailLogin() {
@@ -1330,6 +1341,7 @@ function showLogin() { $("loginModal").classList.remove("hidden"); }
 function closeLogin() { $("loginModal").classList.add("hidden"); }
 
 function updateAuthUI() {
+    buildNav();
     const btn = $("authBtn");
     if (!btn) return;
     if (currentUser) {
@@ -1340,7 +1352,6 @@ function updateAuthUI() {
         btn.classList.remove("in");
     }
 }
-
 /* ============ NATIJALAR ============ */
 function renderResults() {
     const box = $("resultsContent");
@@ -1462,16 +1473,217 @@ function exportData() {
     toast("Fayl yuklab olindi");
 }
 function resetAll() {
-    if (!confirm("Barcha ma'lumotlar o'chiriladi. Davom etamizmi?")) return;
+    if (!confirm("Hamma narsa o'chiriladi: akkauntlar, ball, admin savollar.\nToza boshlash uchun davom etamizmi?")) return;
     localStorage.removeItem(STORE_KEY);
     localStorage.removeItem(ACTIVE_KEY);
+    localStorage.removeItem(USERS_KEY);
+    localStorage.removeItem(CUSTOM_KEY);
     location.reload();
 }
+/* ============ ADMIN PANEL ============ */
+function isAdmin() {
+    if (!currentUser) return false;
+    const users = getUsers();
+    return !!(users[currentUser] && users[currentUser].admin);
+}
 
+function renderAdmin() {
+    if (!isAdmin()) { showSection("sozlamalar"); toast("Siz admin emassiz!", "error"); return; }
+    const users = getUsers();
+    const list = Object.entries(users);
+    const c = getCustom();
+    const qCount = Object.values(c.tests || {}).reduce((s, a) => s + a.length, 0);
+    const fcCount = Object.values(c.flashcards || {}).reduce((s, a) => s + a.length, 0);
+
+    $("adminStats").innerHTML = `
+    <div class="stat"><div class="s-num">${list.length}</div><div class="s-lbl">Foydalanuvchi</div></div>
+    <div class="stat"><div class="s-num">${qCount}</div><div class="s-lbl">Savollar</div></div>
+    <div class="stat"><div class="s-num">${fcCount}</div><div class="s-lbl">Kartochkalar</div></div>`;
+
+    const subjOpts = SUBJECTS.map(s => `<option value="${s.id}">${s.icon} ${s.name}</option>`).join("");
+    if ($("qSubject")) $("qSubject").innerHTML = subjOpts;
+    if ($("fcSubject")) $("fcSubject").innerHTML = subjOpts;
+
+    $("adminUserCount").textContent = list.length + " ta";
+    $("adminUserList").innerHTML = list.map(([email, u]) => {
+        const st = u.state || {};
+        return `<div class="admin-user">
+      <div class="admin-av">${(email.split("@")[0] || "U").slice(0, 2).toUpperCase()}</div>
+      <div class="admin-info"><b>${escapeHtml(st.name || email.split("@")[0])} ${u.admin ? '<span class="admin-badge">🛡 ADMIN</span>' : ""}${email === currentUser ? ' <span class="tag tag-plain">siz</span>' : ""}</b>
+      <span>${email} · ⚡ ${st.super ? "∞" : (st.energy == null ? 25 : st.energy)} · 💎 ${st.gems || 0}</span></div>
+      <div class="admin-actions">
+        <button class="admin-btn" onclick="adminGems('${email}', 100)">+100💎</button>
+        <button class="admin-btn warn" onclick="adminSuper('${email}')">${st.super ? "✕👑" : "👑"}</button>
+        <button class="admin-btn warn" onclick="adminEnergy('${email}')">⚡</button>
+        <button class="admin-btn" onclick="adminRights('${email}')">${u.admin ? "✕🛡" : "🛡"}</button>
+        <button class="admin-btn danger" onclick="adminDelete('${email}')">🗑</button>
+      </div></div>`;
+    }).join("");
+
+    let qHtml = "";
+    Object.entries(c.tests || {}).forEach(([subj, qs]) => {
+        qs.forEach((q, i) => {
+            qHtml += `<div class="admin-user"><div class="admin-av">❓</div>
+        <div class="admin-info"><b>${escapeHtml(q.q)}</b><span>${subjName(subj)} · To'g'ri: ${escapeHtml(q.o[q.a])}</span></div>
+        <div class="admin-actions"><button class="admin-btn danger" onclick="deleteCustomQuestion('${subj}', ${i})">🗑</button></div></div>`;
+        });
+    });
+    $("customQCount").textContent = qCount;
+    $("customQList").innerHTML = qHtml || `<div class="empty" style="padding:25px">Hali savol qo'silmagan</div>`;
+
+    let fcHtml = "";
+    Object.entries(c.flashcards || {}).forEach(([subj, cards]) => {
+        cards.forEach((f, i) => {
+            fcHtml += `<div class="admin-user"><div class="admin-av">🃏</div>
+        <div class="admin-info"><b>${escapeHtml(f.f)} → ${escapeHtml(String(f.b)).slice(0, 40)}</b><span>${subjName(subj)}</span></div>
+        <div class="admin-actions"><button class="admin-btn danger" onclick="deleteCustomFlashcard('${subj}', ${i})">🗑</button></div></div>`;
+        });
+    });
+    $("customFCCount").textContent = fcCount;
+    $("customFCList").innerHTML = fcHtml || `<div class="empty" style="padding:25px">Hali kartochka qo'silmagan</div>`;
+}
+
+function adminGems(email, n) {
+    const users = getUsers();
+    if (!users[email]) return;
+    users[email].state.gems = (users[email].state.gems || 0) + n;
+    setUsers(users);
+    if (email === currentUser) { state.gems += n; save(); updateEnergyUI(); }
+    renderAdmin();
+    toast(`💎 +${n}!`);
+}
+
+function adminSuper(email) {
+    const users = getUsers();
+    if (!users[email]) return;
+    const st = users[email].state;
+    st.super = !st.super;
+    if (st.super) st.superUntil = Date.now() + 30 * 86400000;
+    setUsers(users);
+    if (email === currentUser) { save(); updateChrome(); updateEnergyUI(); }
+    renderAdmin();
+    toast("👑 SUPER o'zgartirildi!");
+}
+
+function adminEnergy(email) {
+    const users = getUsers();
+    if (!users[email]) return;
+    users[email].state.energy = 25;
+    setUsers(users);
+    if (email === currentUser) { state.energy = 25; save(); updateEnergyUI(); }
+    renderAdmin();
+    toast("⚡ Energiya to'ldirildi!");
+}
+
+function adminRights(email) {
+    const users = getUsers();
+    if (!users[email]) return;
+    users[email].admin = !users[email].admin;
+    setUsers(users);
+    buildNav();
+    renderAdmin();
+    toast("🛡 Admin huquqi o'zgartirildi!");
+}
+
+function adminDelete(email) {
+    if (email === currentUser) { toast("O'zingizni o'chira olmaysiz!", "error"); return; }
+    if (!confirm(email + " o'chirilsinmi?")) return;
+    const users = getUsers();
+    delete users[email];
+    setUsers(users);
+    renderAdmin();
+    toast("🗑 O'chirildi");
+}
+
+/* ===== CUSTOM KONTENT ===== */
+const CUSTOM_KEY = "ilmAICustom";
+
+function getCustom() {
+    try { return JSON.parse(localStorage.getItem(CUSTOM_KEY)) || { tests: {}, flashcards: {} }; }
+    catch (e) { return { tests: {}, flashcards: {} }; }
+}
+function setCustom(c) { localStorage.setItem(CUSTOM_KEY, JSON.stringify(c)); }
+
+function applyCustom() {
+    const c = getCustom();
+    Object.values(TESTS).forEach(arr => { for (let i = arr.length - 1; i >= 0; i--) if (arr[i].custom) arr.splice(i, 1); });
+    Object.values(FLASHCARDS).forEach(arr => { for (let i = arr.length - 1; i >= 0; i--) if (arr[i].custom) arr.splice(i, 1); });
+    Object.entries(c.tests || {}).forEach(([subj, qs]) => {
+        if (TESTS[subj]) TESTS[subj].push(...qs.map(q => Object.assign({}, q, { custom: true })));
+    });
+    Object.entries(c.flashcards || {}).forEach(([subj, cards]) => {
+        if (FLASHCARDS[subj]) FLASHCARDS[subj].push(...cards.map(f => Object.assign({}, f, { custom: true })));
+    });
+}
+
+function addCustomQuestion() {
+    const subj = $("qSubject").value;
+    const text = $("qText").value.trim();
+    const opts = [$("qOpt1").value.trim(), $("qOpt2").value.trim(), $("qOpt3").value.trim(), $("qOpt4").value.trim()];
+    if (!text || opts.some(o => !o)) { toast("Savol va 4 ta javobni to'ldiring!", "error"); return; }
+    const q = { q: text, o: opts, a: +$("qCorrect").value, l: +$("qDiff").value, g: [+$("qGrade").value, 11], e: $("qExp").value.trim() || "Admin savoli." };
+    const c = getCustom();
+    if (!c.tests[subj]) c.tests[subj] = [];
+    c.tests[subj].push(q);
+    setCustom(c);
+    applyCustom();
+    ["qText", "qOpt1", "qOpt2", "qOpt3", "qOpt4", "qExp"].forEach(id => $(id).value = "");
+    renderAdmin();
+    confetti();
+    toast("✅ Savol qo'shildi!");
+}
+
+function deleteCustomQuestion(subj, idx) {
+    if (!confirm("Savol o'chirilsinmi?")) return;
+    const c = getCustom();
+    if (c.tests[subj]) { c.tests[subj].splice(idx, 1); if (!c.tests[subj].length) delete c.tests[subj]; }
+    setCustom(c);
+    applyCustom();
+    renderAdmin();
+    toast("Savol o'chirildi");
+}
+
+function addCustomFlashcard() {
+    const subj = $("fcSubject").value;
+    const front = $("fcFront").value.trim();
+    const back = $("fcBack").value.trim();
+    if (!front || !back) { toast("Ikki tomonni ham yozing!", "error"); return; }
+    const c = getCustom();
+    if (!c.flashcards[subj]) c.flashcards[subj] = [];
+    c.flashcards[subj].push({ f: front, b: back, g: [+$("fcGrade").value, 11] });
+    setCustom(c);
+    applyCustom();
+    $("fcFront").value = ""; $("fcBack").value = "";
+    renderAdmin();
+    confetti();
+    toast("✅ Kartochka qo'shildi!");
+}
+
+function deleteCustomFlashcard(subj, idx) {
+    if (!confirm("Kartochka o'chirilsinmi?")) return;
+    const c = getCustom();
+    if (c.flashcards[subj]) { c.flashcards[subj].splice(idx, 1); if (!c.flashcards[subj].length) delete c.flashcards[subj]; }
+    setCustom(c);
+    applyCustom();
+    renderAdmin();
+    toast("Kartochka o'chirildi");
+}
+
+function ensureAdminExists() {
+    const users = getUsers();
+    const emails = Object.keys(users);
+    if (!emails.length) return;
+    if (!emails.some(e => users[e].admin)) {
+        users[emails[0]].admin = true;
+        setUsers(users);
+    }
+}
 /* ============ ISHGA TUSHIRISH ============ */
 document.addEventListener("DOMContentLoaded", () => {
     if (state.weekId !== currentWeek()) { state.weekId = currentWeek(); state.weeklyPoints = 0; save(); }
     buildNav();
+    ensureAdminExists();
+    applyCustom();
     buildGradeSel();
     buildOnboard();
     if (!state.grade) $("onboard").classList.remove("hidden");
