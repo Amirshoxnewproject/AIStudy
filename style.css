@@ -365,3 +365,19 @@ textarea.input{resize:vertical;width:100%}
 /* ===== SUPER LOGO — 4 rangda aylanadi ===== */
 body.super .brand-mark{background:linear-gradient(135deg,#58CC02,#7C3AED,#1D4ED8,#06B6D4,#58CC02);background-size:300% 300%;animation:superShift 6s ease infinite}
 @keyframes superShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+/* ===== ADMIN PANEL ===== */
+.admin-user{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.admin-user:last-child{border-bottom:none}
+.admin-av{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px;flex:none}
+.admin-info{flex:1;min-width:160px}
+.admin-info b{display:block;font-size:14px}
+.admin-info span{font-size:12px;color:var(--muted)}
+.admin-actions{display:flex;gap:6px;flex-wrap:wrap}
+.admin-btn{padding:7px 10px;border:none;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s}
+.admin-btn:hover{background:var(--accent);color:#fff}
+.admin-btn.warn{background:var(--warn-soft);color:var(--warn)}
+.admin-btn.warn:hover{background:var(--warn);color:#fff}
+.admin-btn.danger{background:var(--danger-soft);color:var(--danger)}
+.admin-btn.danger:hover{background:var(--danger);color:#fff}
+.admin-badge{background:linear-gradient(135deg,#F59E0B,#EF4444);color:#fff;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:800}
+.admin-form{display:flex;flex-direction:column;gap:10px}
