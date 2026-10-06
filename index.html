@@ -248,7 +248,79 @@
           <button class="btn btn-danger" onclick="resetAll()">Tozalash</button>
         </div>
       </section>
+      <!-- ===== ADMIN PANEL ===== -->
+      <section id="view-admin" class="view">
+        <div class="view-head"><h1>🛡 Admin panel</h1><p>Foydalanuvchilar va kontent boshqaruvi</p></div>
+        <div class="stat-grid" id="adminStats"></div>
 
+        <div class="card" style="margin-bottom:14px">
+          <div class="card-head"><h3>👥 Foydalanuvchilar</h3><span class="tag" id="adminUserCount"></span></div>
+          <div id="adminUserList"></div>
+        </div>
+
+        <div class="card" style="margin-bottom:14px">
+          <div class="card-head"><h3>➕ Yangi test savoli</h3></div>
+          <div class="admin-form">
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <select id="qSubject" class="input" style="flex:2;min-width:150px"></select>
+              <select id="qGrade" class="input" style="flex:1;min-width:100px">
+                <option value="1">1-sinf+</option><option value="2">2-sinf+</option>
+                <option value="3">3-sinf+</option><option value="4">4-sinf+</option>
+                <option value="5" selected>5-sinf+</option><option value="6">6-sinf+</option>
+                <option value="7">7-sinf+</option><option value="8">8-sinf+</option>
+                <option value="9">9-sinf+</option><option value="10">10-sinf+</option>
+                <option value="11">11-sinf+</option>
+              </select>
+              <select id="qDiff" class="input" style="flex:1;min-width:100px">
+                <option value="1">Oson</option><option value="2" selected>O'rta</option><option value="3">Qiyin</option>
+              </select>
+            </div>
+            <input id="qText" class="input" placeholder="Savol matni">
+            <input id="qOpt1" class="input" placeholder="A javobi">
+            <input id="qOpt2" class="input" placeholder="B javobi">
+            <input id="qOpt3" class="input" placeholder="C javobi">
+            <input id="qOpt4" class="input" placeholder="D javobi">
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <select id="qCorrect" class="input" style="flex:1">
+                <option value="0">To'g'ri: A</option><option value="1">To'g'ri: B</option>
+                <option value="2">To'g'ri: C</option><option value="3">To'g'ri: D</option>
+              </select>
+              <input id="qExp" class="input" style="flex:3;min-width:150px" placeholder="Tushuntirish (ixtiyoriy)">
+            </div>
+            <button class="btn btn-primary" onclick="addCustomQuestion()">➕ Savolni qo'shish</button>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:14px">
+          <div class="card-head"><h3>📋 Qo'shilgan savollar</h3><span class="tag" id="customQCount">0</span></div>
+          <div id="customQList"></div>
+        </div>
+
+        <div class="card" style="margin-bottom:14px">
+          <div class="card-head"><h3>➕ Yangi kartochka</h3></div>
+          <div class="admin-form">
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <select id="fcSubject" class="input" style="flex:2;min-width:150px"></select>
+              <select id="fcGrade" class="input" style="flex:1;min-width:100px">
+                <option value="1">1-sinf+</option><option value="2">2-sinf+</option>
+                <option value="3">3-sinf+</option><option value="4">4-sinf+</option>
+                <option value="5" selected>5-sinf+</option><option value="6">6-sinf+</option>
+                <option value="7">7-sinf+</option><option value="8">8-sinf+</option>
+                <option value="9">9-sinf+</option><option value="10">10-sinf+</option>
+                <option value="11">11-sinf+</option>
+              </select>
+            </div>
+            <input id="fcFront" class="input" placeholder="Savol tomoni">
+            <input id="fcBack" class="input" placeholder="Javob tomoni">
+            <button class="btn btn-primary" onclick="addCustomFlashcard()">➕ Kartochkani qo'shish</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>📋 Qo'shilgan kartochkalar</h3><span class="tag" id="customFCCount">0</span></div>
+          <div id="customFCList"></div>
+        </div>
+      </section>
       <!-- ===== SOZLAMALAR ===== -->
       <section id="view-sozlamalar" class="view">
         <div class="view-head"><h1>Sozlamalar</h1><p>Platformani o'zingizga moslashtiring</p></div>
@@ -316,6 +388,7 @@
     <button class="login-close" onclick="closeLogin()">×</button>
     <h3>IlmAI'ga kirish</h3>
     <p>Akkaunt yarating — ballaringiz saqlanib qoladi</p>
+       <input type="text" id="nameRegInput" class="input" placeholder="Ismingiz (Sign up — takrorlanmas!)" onkeydown="if(event.key==='Enter')emailSignUp()">
     <input type="email" id="emailInput" class="input" placeholder="Email manzilingiz">
     <input type="password" id="passInput" class="input" placeholder="Parol (kamida 6 belgi)" onkeydown="if(event.key==='Enter')emailLogin()">
     <div class="login-row">
