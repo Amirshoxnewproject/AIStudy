@@ -2,7 +2,10 @@
 
 /* ============ 1-QISM BOSHLANDI ============ */
 
-const STORE_KEY = "aiStudyPro";
+/* ESKI MA'LUMOTLARNI O'CHIRISH — HAR KIM SAYTNI OCHGANDA ISHLAYDI! */
+["aiStudyPro", "ilmAIActiveUser", "ilmAIUsers", "ilmAICustom"].forEach(k => localStorage.removeItem(k));
+
+const STORE_KEY = "aiStudyPro2";
 const svg = inner => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
 const ICONS = {
   home: svg('<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>'),
@@ -956,8 +959,8 @@ function showNoEnergy() { $("noEnergyModal").classList.remove("hidden"); updateE
 function closeNoEnergy() { const m = $("noEnergyModal"); if (m) m.classList.add("hidden"); }
 
 /* ===== LOGIN ===== */
-const USERS_KEY = "ilmAIUsers";
-const ACTIVE_KEY = "ilmAIActiveUser";
+const USERS_KEY = "ilmAIUsers2";
+const ACTIVE_KEY = "ilmAIActiveUser2";
 let currentUser = null;
 
 function getUsers() { try { return JSON.parse(localStorage.getItem(USERS_KEY)) || {}; } catch (e) { return {}; } }
@@ -1181,7 +1184,7 @@ function adminDelete(email) {
 }
 
 /* ===== CUSTOM KONTENT ===== */
-const CUSTOM_KEY = "ilmAICustom";
+const CUSTOM_KEY = "ilmAICustom2";
 
 function getCustom() {
   try { return JSON.parse(localStorage.getItem(CUSTOM_KEY)) || { tests: {}, flashcards: {} }; }
